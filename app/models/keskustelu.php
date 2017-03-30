@@ -24,6 +24,24 @@
 			return $messages;
 		}
 		
+		public static function allFrom($id){
+			$query = DB::connection()->prepare('SELECT * FROM Keskustelu WHERE aihealue_id = :id');
+			$query->execute(array('id' => $id));
+			$rows = $query->fetchAll();
+			$keskustelut = array();
+
+			foreach($rows as $row){
+				$keskustelut[] = new Keskustelu(array(
+					'id' => $row['id'],
+					'kayttaja_id' => $row['kayttaja_id'],
+					'aihealue_id' => $row['aihealue_id'],
+					'otsikko' => $row['otsikko']
+				));
+			}
+
+			return $keskustelut;
+		}
+		
 		public static function find($id){
 			$query = DB::connection()->prepare('SELECT * FROM Keskustelu WHERE id = :id LIMIT 1');
 			$query->execute(array('id' => $id));

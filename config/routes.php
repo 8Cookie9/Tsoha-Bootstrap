@@ -1,7 +1,7 @@
 <?php
 
   $routes->get('/', function() {
-    ForumsController::index();
+    ForumsController::aihealueet();
   });
 
   $routes->get('/hiekkalaatikko', function() {
