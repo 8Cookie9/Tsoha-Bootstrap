@@ -1,6 +1,12 @@
 {% extends "base.html" %}
 {% block content %}
 
+{% if message %}
+<div class="alert alert-success">
+  {{message}}
+</div>
+{% endif %}
+
 <h1>{{keskustelu.otsikko}}</h1>
 	
 {% for viesti in viestit %}
@@ -15,8 +21,8 @@
 	<div class="col-xs-6" style="border-bottom: 1px solid;padding: 5px;">{{viesti.aika}}</div>
 	<div class="col-xs-12" style="padding: 30px;">{{viesti.sisalto}}</div>
   </div>
-  
-  <h1>Lisää uusi viesti</h1>
+{% endfor %}
+<h1>Lisää uusi viesti</h1>
 
   <form method="post">
     <div class="form-group">
@@ -28,6 +34,4 @@
       <button type="submit" class="btn btn-primary">Lähetä</button>
     </div>
   </form>
-{% endfor %}
-  
 {% endblock %}
