@@ -26,7 +26,7 @@
 		}
 		
 		public static function allFrom($id){
-			$query = DB::connection()->prepare('SELECT * FROM Viesti WHERE keskustelu_id = :id ORDER BY aika DESC');
+			$query = DB::connection()->prepare('SELECT * FROM Viesti WHERE keskustelu_id = :id ORDER BY aika ASC');
 			$query->execute(array('id' => $id));
 			$rows = $query->fetchAll();
 			$viestit = array();
