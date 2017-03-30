@@ -26,5 +26,5 @@ CREATE TABLE Viesti(
 
 CREATE TABLE Luettu(
 	keskustelu_id INTEGER REFERENCES Keskustelu(id),
-	kayttaja_id INTEGER REFERENCES Kayttaja(id),
+	kayttaja_id INTEGER REFERENCES Kayttaja(id)
 );
