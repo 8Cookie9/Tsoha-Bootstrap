@@ -21,7 +21,7 @@
   });
   
   $routes->post('/keskustelu/:id', function($id) {
-    ForumsController::store($id);
+    ForumsController::aihealueet();
   });
   
   $routes->get('/login', function() {
