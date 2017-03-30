@@ -8,8 +8,8 @@
     }
 
     public static function sandbox(){
-		$msg = Game::find(1);
-		$msgs = Game::all();
+		$msg = Msg::find(1);
+		$msgs = Msg::all();
 		Kint::dump($msgs);
 		Kint::dump($msg);
     }
