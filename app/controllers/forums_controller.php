@@ -41,8 +41,10 @@
 		  'sisalto' => $params['content']
 		));
 		
+		Kint::dump($params);
+		
 		$viesti->save();
-		Redirect::to('/keskustelu/1', array('message' => 'Viesti lähetetty!'));
+		//Redirect::to('/keskustelu/1', array('message' => 'Viesti lähetetty!'));
 	}
 	
 	public static function login(){
