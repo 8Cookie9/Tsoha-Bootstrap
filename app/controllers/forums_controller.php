@@ -9,14 +9,14 @@
     public static function sandbox(){
 		$msg = Viesti::find(1);
 		$msgs = Viesti::all();
-		$aihealueet = Aihealueet::all();
+		$aihealueet = Aihealue::all();
 		Kint::dump($msgs);
 		Kint::dump($msg);
 		Kint::dump($aihealueet);
     }
 	
 	public static function aihealueet(){
-		$aihealueet = Aihealueet::all();
+		$aihealueet = Aihealue::all();
 		View::make('suunnitelmat/aihealueet.html', array('aihealueet' => $aihealueet));
     }
 	
