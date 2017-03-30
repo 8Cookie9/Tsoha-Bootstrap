@@ -1,6 +1,6 @@
 <?php
-	class Msg extends BaseModel{
-		public $id, $thread_id, $user_id, $ans_id, $content;
+	class Viesti extends BaseModel{
+		public $id, $keskustelu_id, $kayttaja_id, $viesti_id, $sisalto;
 		
 		public function __construct($attributes){
 			parent::__construct($attributes);
@@ -13,11 +13,11 @@
 			$messages = array();
 
 			foreach($rows as $row){
-				$messages[] = new Msg(array(
+				$messages[] = new Viesti(array(
 					'id' => $row['id'],
-					'user_id' => $row['kayttaja_id'],
-					'ans_id' => $row['viesti_id'],
-					'content' => $row['sisalto']
+					'kayttaja_id' => $row['kayttaja_id'],
+					'viesti_id' => $row['viesti_id'],
+					'sisalto' => $row['sisalto']
 				));
 			}
 
@@ -29,13 +29,13 @@
 			$query->execute(array('id' => $id));
 			$row = $query->fetch();
 			if($row){
-				$msg = new Msg(array(
+				$Viesti = new Viesti(array(
 					'id' => $row['id'],
-					'user_id' => $row['kayttaja_id'],
-					'ans_id' => $row['viesti_id'],
-					'content' => $row['sisalto']
+					'kayttaja_id' => $row['kayttaja_id'],
+					'viesti_id' => $row['viesti_id'],
+					'sisalto' => $row['sisalto']
 				));
-			return $msg;
+			return $Viesti;
 		}
 		return null;
 	  }

@@ -12,15 +12,11 @@
     </thead>
 
     <tbody>
-      <tr>
-        <td><a href="">Alue1</a></td>
-      </tr>
-	  <tr>
-        <td><a href="">Alue2</a></td>
-      </tr>
-	  <tr>
-        <td><a href="">Alue3</a></td>
-      </tr>
+	{% for aihealue in aihealueet %}
+		  <tr>
+			<td><a href="{{base_path}}/{{aihealue.id}}">{{aihealue.nimi}}</a></td>
+		  </tr>
+	  {% endfor %}
     </tbody>
   </table>
   

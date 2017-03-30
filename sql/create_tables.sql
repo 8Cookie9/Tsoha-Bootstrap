@@ -7,7 +7,7 @@ CREATE TABLE Aihealue(
 CREATE TABLE Kayttaja(
 	id SERIAL PRIMARY KEY,
 	nimi varchar(16) NOT NULL,
-	oikeudet varchar(10) NOT NULL
+	admin boolean NOT NULL
 );
 
 CREATE TABLE Keskustelu(

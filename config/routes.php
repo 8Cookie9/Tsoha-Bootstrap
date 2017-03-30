@@ -1,26 +1,26 @@
 <?php
 
   $routes->get('/', function() {
-    HelloWorldController::index();
+    ForumsController::index();
   });
 
   $routes->get('/hiekkalaatikko', function() {
-    HelloWorldController::sandbox();
+    ForumsController::sandbox();
   });
   
   $routes->get('/aihealueet', function() {
-    HelloWorldController::aihealueet();
+    ForumsController::aihealueet();
   });
   
   $routes->get('/keskustelut', function() {
-    HelloWorldController::keskustelut();
+    ForumsController::keskustelut();
   });
   
   
   $routes->get('/keskustelu', function() {
-    HelloWorldController::keskustelu();
+    ForumsController::keskustelu();
   });
   
   $routes->get('/login', function() {
-    HelloWorldController::login();
+    ForumsController::login();
   });
