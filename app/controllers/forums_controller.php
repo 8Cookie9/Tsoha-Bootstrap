@@ -42,7 +42,7 @@
 		));
 		
 		$viesti->save();
-		Redirect::to('/keskustelu/' . $id);
+		Redirect::to('/keskustelut');
 	}
 	
 	public static function login(){
