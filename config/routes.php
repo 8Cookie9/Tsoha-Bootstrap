@@ -12,13 +12,13 @@
     ForumsController::aihealueet();
   });
   
-  $routes->get('/keskustelut', function() {
-    ForumsController::keskustelut();
+  $routes->get('/keskustelut/:id', function($id) {
+    ForumsController::keskustelut($id);
   });
   
   
-  $routes->get('/keskustelu', function() {
-    ForumsController::keskustelu();
+  $routes->get('/keskustelu/:id', function($id) {
+    ForumsController::keskustelu($id);
   });
   
   $routes->get('/login', function() {
