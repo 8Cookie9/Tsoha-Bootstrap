@@ -26,8 +26,10 @@
 		View::make('suunnitelmat/keskustelut.html', array('keskustelut' => $keskustelut, 'aihealue' => $aihealue));
     }
 	
-	public static function keskustelu(){
-		View::make('suunnitelmat/keskustelu.html');
+	public static function keskustelu($id){
+		$keskustelu = Keskustelu::find($id);
+		$viestit = Viesti::allFrom($id);
+		View::make('suunnitelmat/keskustelu.html', array('keskustelu' => $keskustelu,'viestit' => $viestit));
     }
 	
 	public static function login(){
