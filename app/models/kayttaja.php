@@ -13,7 +13,7 @@
 			$messages = array();
 
 			foreach($rows as $row){
-				$messages[] = new Aihealue(array(
+				$messages[] = new Kayttaja(array(
 					'id' => $row['id'],
 					'nimi' => $row['nimi'],
 					'admin' => $row['admin']
@@ -28,12 +28,12 @@
 			$query->execute(array('id' => $id));
 			$row = $query->fetch();
 			if($row){
-				$Aihealue = new Aihealue(array(
+				$Kayttaja = new Kayttaja(array(
 					'id' => $row['id'],
 					'nimi' => $row['nimi'],
 					'admin' => $row['admin']
 				));
-			return $Aihealue;
+			return $Kayttaja;
 		}
 		return null;
 	  }

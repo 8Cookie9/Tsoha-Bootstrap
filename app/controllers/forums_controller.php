@@ -29,7 +29,8 @@
 	public static function keskustelu($id){
 		$keskustelu = Keskustelu::find($id);
 		$viestit = Viesti::allFrom($id);
-		View::make('suunnitelmat/keskustelu.html', array('keskustelu' => $keskustelu,'viestit' => $viestit));
+		$kayttajat = Kayttaja:all();
+		View::make('suunnitelmat/keskustelu.html', array('keskustelu' => $keskustelu,'viestit' => $viestit,'kayttajat' => $kayttajat));
     }
 	
 	public static function login(){
