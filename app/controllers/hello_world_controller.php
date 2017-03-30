@@ -7,25 +7,26 @@
     }
 
     public static function sandbox(){
-		$msg = Msg::find(1);
-		$msgs = Msg::all();
-		Kint::dump($msgs);
-		Kint::dump($msg);
+		$Viesti = Viesti::find(1);
+		$Viestis = Viesti::all();
+		Kint::dump($Viestis);
+		Kint::dump($Viesti);
     }
 	
 	public static function aihealueet(){
-   	  View::make('suunnitelmat/aihealueet.html');
+		$aihealueet = Aihealueet::all();
+		View::make('suunnitelmat/aihealueet.html', array('aihealueet' => $aihealueet));
     }
 	
 	public static function keskustelut(){
-   	  View::make('suunnitelmat/keskustelut.html');
+		View::make('suunnitelmat/keskustelut.html');
     }
 	
 	public static function keskustelu(){
-   	  View::make('suunnitelmat/keskustelu.html');
+		View::make('suunnitelmat/keskustelu.html');
     }
 	
 	public static function login(){
-   	  View::make('suunnitelmat/login.html');
+		View::make('suunnitelmat/login.html');
     }
   }
