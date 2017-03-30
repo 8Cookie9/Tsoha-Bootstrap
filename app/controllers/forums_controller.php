@@ -29,7 +29,7 @@
 	public static function keskustelu($id){
 		$keskustelu = Keskustelu::find($id);
 		$viestit = Viesti::allFrom($id);
-		$kayttajat = Kayttaja:all();
+		$kayttajat = Kayttaja::all();
 		View::make('suunnitelmat/keskustelu.html', array('keskustelu' => $keskustelu,'viestit' => $viestit,'kayttajat' => $kayttajat));
     }
 	
