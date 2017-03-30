@@ -24,6 +24,10 @@
     ForumsController::keskustelu($id);
   });
   
+  $routes->get('/editviesti/:id', function($id) {
+    ForumsController::muokkaus($id);
+  });
+  
   $routes->get('/login', function() {
     ForumsController::login();
   });

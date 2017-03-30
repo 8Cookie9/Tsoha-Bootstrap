@@ -20,6 +20,10 @@
 		View::make('suunnitelmat/aihealueet.html', array('aihealueet' => $aihealueet));
     }
 	
+	public static function muokkaus($id){
+		View::make('suunnitelmat/muokkaus.html');
+    }
+	
 	public static function keskustelut($id){
 		$keskustelut = Keskustelu::allFrom($id);
 		$aihealue = Aihealue::find($id);
