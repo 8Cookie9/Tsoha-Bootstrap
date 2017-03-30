@@ -33,6 +33,20 @@
 		View::make('suunnitelmat/keskustelu.html', array('keskustelu' => $keskustelu,'viestit' => $viestit,'kayttajat' => $kayttajat));
     }
 	
+	public static function addViesti($id){
+		$params = $_POST;
+		$viesti = new Viesti(array(
+		  'keskustelu_id' => $id,
+		  'kayttaja_id' => 1,
+		  'sisalto' => $params['content']
+		));
+		
+		Kint::dump($params);
+		
+		$viesti->save();
+		Redirect::to('/keskustelu/' . $id, array('message' => 'Viesti lähetetty!'));
+	}
+	
 	public static function login(){
 		View::make('suunnitelmat/login.html');
     }

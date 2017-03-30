@@ -60,4 +60,9 @@
 		}
 		return null;
 	  }
+	  
+		public function save(){
+			$query = DB::connection()->prepare('INSERT INTO Viesti (keskustelu_id, kayttaja_id, sisalto) VALUES (:keskustelu_id, :kayttaja_id, :sisalto) RETURNING kayttaja_id');
+			$query->execute(array('keskustelu_id' => $this->keskustelu_id, 'kayttaja_id' => $this->kayttaja_id, 'sisalto' => $this->sisalto));
+		}
 	}

@@ -16,9 +16,12 @@
     ForumsController::keskustelut($id);
   });
   
-  
   $routes->get('/keskustelu/:id', function($id) {
     ForumsController::keskustelu($id);
+  });
+  
+  $routes->post('/keskustelu/:id', function($id) {
+    ForumsController::addViesti($id);
   });
   
   $routes->get('/login', function() {
