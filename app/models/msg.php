@@ -30,7 +30,7 @@
 			$query->execute(array('id' => $id));
 			$row = $query->fetch();
 			if($row){
-				$msg = new Game(array(
+				$msg = new Msg(array(
 					'id' => $row['id'],
 					'thread_id' => $row['thread_id'],
 					'user_id' => $row['user_id'],
