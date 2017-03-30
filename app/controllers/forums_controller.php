@@ -33,7 +33,7 @@
 		View::make('suunnitelmat/keskustelu.html', array('keskustelu' => $keskustelu,'viestit' => $viestit,'kayttajat' => $kayttajat));
     }
 	
-	public static function addViesti($id){
+	public static function store($id){
 		$params = $_POST;
 		$viesti = new Viesti(array(
 		  'keskustelu_id' => $id,
@@ -42,7 +42,7 @@
 		));
 		
 		$viesti->save();
-		Redirect::to('/keskustelut');
+		Redirect::to('/');
 	}
 	
 	public static function login(){
