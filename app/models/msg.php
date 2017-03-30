@@ -15,9 +15,9 @@
 			foreach($rows as $row){
 				$messages[] = new Msg(array(
 					'id' => $row['id'],
-					'kayttaja_id' => $row['user_id'],
-					'viesti_id' => $row['ans_id'],
-					'sisalto' => $row['content']
+					'user_id' => $row['kayttaja_id'],
+					'ans_id' => $row['viesti_id'],
+					'content' => $row['sisalto']
 				));
 			}
 
@@ -31,9 +31,9 @@
 			if($row){
 				$msg = new Msg(array(
 					'id' => $row['id'],
-					'kayttaja_id' => $row['user_id'],
-					'viesti_id' => $row['ans_id'],
-					'sisalto' => $row['content']
+					'user_id' => $row['kayttaja_id'],
+					'ans_id' => $row['viesti_id'],
+					'content' => $row['sisalto']
 				));
 			return $msg;
 		}
