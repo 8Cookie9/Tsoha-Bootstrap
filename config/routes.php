@@ -1,6 +1,6 @@
 <?php
 
-  $routes->post('/keskustelu/:id/', function($id) {
+  $routes->post('/keskustelu', function() {
     ForumsController::aihealueet();
   });	
 
