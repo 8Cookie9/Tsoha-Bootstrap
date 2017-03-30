@@ -1,5 +1,9 @@
 <?php
 
+  $routes->post('/keskustelu/:id/', function($id) {
+    ForumsController::aihealueet();
+  });	
+
   $routes->get('/', function() {
     ForumsController::aihealueet();
   });
@@ -18,10 +22,6 @@
   
   $routes->get('/keskustelu/:id', function($id) {
     ForumsController::keskustelu($id);
-  });
-  
-  $routes->post('/keskustelu/:id', function($id) {
-    ForumsController::aihealueet();
   });
   
   $routes->get('/login', function() {
