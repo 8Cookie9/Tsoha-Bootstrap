@@ -21,7 +21,8 @@ CREATE TABLE Viesti(
 	id SERIAL PRIMARY KEY,
 	keskustelu_id INTEGER REFERENCES Keskustelu(id),
 	kayttaja_id INTEGER REFERENCES Kayttaja(id),
-	sisalto varchar(1000) NOT NULL
+	sisalto varchar(1000) NOT NULL,
+	aika timestamp DEFAULT now()
 );
 
 CREATE TABLE Luettu(

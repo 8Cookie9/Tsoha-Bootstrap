@@ -1,6 +1,6 @@
 <?php
 	class Viesti extends BaseModel{
-		public $id, $keskustelu_id, $kayttaja_id, $viesti_id, $sisalto;
+		public $id, $keskustelu_id, $kayttaja_id, $viesti_id, $sisalto, $aika;
 		
 		public function __construct($attributes){
 			parent::__construct($attributes);
@@ -17,8 +17,8 @@
 					'id' => $row['id'],
 					'keskustelu_id' => $row['keskustelu_id'],
 					'kayttaja_id' => $row['kayttaja_id'],
-					'viesti_id' => $row['viesti_id'],
-					'sisalto' => $row['sisalto']
+					'sisalto' => $row['sisalto'],
+					'aika' => $row['aika']
 				));
 			}
 
@@ -26,7 +26,7 @@
 		}
 		
 		public static function allFrom($id){
-			$query = DB::connection()->prepare('SELECT * FROM Viesti WHERE keskustelu_id = :id');
+			$query = DB::connection()->prepare('SELECT * FROM Viesti WHERE keskustelu_id = :id ORDER BY aika DESC');
 			$query->execute(array('id' => $id));
 			$rows = $query->fetchAll();
 			$viestit = array();
@@ -36,8 +36,8 @@
 					'id' => $row['id'],
 					'keskustelu_id' => $row['keskustelu_id'],
 					'kayttaja_id' => $row['kayttaja_id'],
-					'viesti_id' => $row['viesti_id'],
-					'sisalto' => $row['sisalto']
+					'sisalto' => $row['sisalto'],
+					'aika' => $row['aika']
 				));
 			}
 
@@ -53,8 +53,8 @@
 					'id' => $row['id'],
 					'keskustelu_id' => $row['keskustelu_id'],
 					'kayttaja_id' => $row['kayttaja_id'],
-					'viesti_id' => $row['viesti_id'],
-					'sisalto' => $row['sisalto']
+					'sisalto' => $row['sisalto'],
+					'aika' => $row['aika']
 				));
 			return $Viesti;
 		}
