@@ -33,16 +33,16 @@
 		View::make('suunnitelmat/keskustelu.html', array('keskustelu' => $keskustelu,'viestit' => $viestit,'kayttajat' => $kayttajat));
     }
 	
-	public static function store($id){
+	public static function store(){
 		$params = $_POST;
 		$viesti = new Viesti(array(
-		  'keskustelu_id' => $id,
+		  'keskustelu_id' => 1,
 		  'kayttaja_id' => 1,
 		  'sisalto' => $params['content']
 		));
 		
 		$viesti->save();
-		Redirect::to('/');
+		Redirect::to('/keskustelu/1', array('message' => 'Viesti lähetetty!'));
 	}
 	
 	public static function login(){

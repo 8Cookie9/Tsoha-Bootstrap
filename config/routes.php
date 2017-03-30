@@ -1,7 +1,7 @@
 <?php
 
   $routes->post('/keskustelu', function(){
-    ForumsController::aihealueet();
+    ForumsController::store();
   });	
 
   $routes->get('/', function() {
