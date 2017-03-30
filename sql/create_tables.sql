@@ -12,14 +12,14 @@ CREATE TABLE Kayttaja(
 
 CREATE TABLE Keskustelu(
 	id SERIAL PRIMARY KEY,
-	aihealue_id INTEGER REFERENCES Keskustelu(id),
+	aihealue_id INTEGER REFERENCES Aihealue(id),
 	kayttaja_id INTEGER REFERENCES Kayttaja(id),
 	otsikko varchar(32) NOT NULL
 );
 
 CREATE TABLE Viesti(
 	id SERIAL PRIMARY KEY,
-	keskustelu_id INTEGER REFERENCES Viesti(id),
+	keskustelu_id INTEGER REFERENCES Keskustelu(id),
 	kayttaja_id INTEGER REFERENCES Kayttaja(id),
 	sisalto varchar(1000) NOT NULL
 );
