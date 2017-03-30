@@ -1,7 +1,7 @@
 <?php
 
-  $routes->post('/keskustelu', function(){
-    ForumsController::store();
+  $routes->post('/keskustelu/:id', function($id){
+    ForumsController::store($id);
   });	
 
   $routes->get('/', function() {
