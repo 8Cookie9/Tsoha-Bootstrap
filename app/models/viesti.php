@@ -15,6 +15,7 @@
 			foreach($rows as $row){
 				$messages[] = new Viesti(array(
 					'id' => $row['id'],
+					'keskustelu_id' => $row['keskustelu_id'],
 					'kayttaja_id' => $row['kayttaja_id'],
 					'viesti_id' => $row['viesti_id'],
 					'sisalto' => $row['sisalto']
@@ -33,6 +34,7 @@
 			foreach($rows as $row){
 				$viestit[] = new viesti(array(
 					'id' => $row['id'],
+					'keskustelu_id' => $row['keskustelu_id'],
 					'kayttaja_id' => $row['kayttaja_id'],
 					'viesti_id' => $row['viesti_id'],
 					'sisalto' => $row['sisalto']
@@ -49,6 +51,7 @@
 			if($row){
 				$Viesti = new Viesti(array(
 					'id' => $row['id'],
+					'keskustelu_id' => $row['keskustelu_id'],
 					'kayttaja_id' => $row['kayttaja_id'],
 					'viesti_id' => $row['viesti_id'],
 					'sisalto' => $row['sisalto']
