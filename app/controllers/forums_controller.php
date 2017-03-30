@@ -7,10 +7,12 @@
     }
 
     public static function sandbox(){
-		$Viesti = Viesti::find(1);
-		$Viestis = Viesti::all();
-		Kint::dump($Viestis);
-		Kint::dump($Viesti);
+		$msg = Viesti::find(1);
+		$msgs = Viesti::all();
+		$aihealueet = Aihealueet::all();
+		Kint::dump($msgs);
+		Kint::dump($msg);
+		Kint::dump($aihealueet);
     }
 	
 	public static function aihealueet(){
