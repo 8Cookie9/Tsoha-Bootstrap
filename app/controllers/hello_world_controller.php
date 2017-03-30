@@ -1,6 +1,6 @@
 <?php
-
-  class HelloWorldController extends BaseController{
+	require 'app/models/msg.php';
+	class HelloWorldController extends BaseController{
 
     public static function index(){
       // make-metodi renderöi app/views-kansiossa sijaitsevia tiedostoja
@@ -8,8 +8,10 @@
     }
 
     public static function sandbox(){
-      // Testaa koodiasi täällä
-      echo 'Hello World!';
+		$msg = Game::find(1);
+		$msgs = Game::all();
+		Kint::dump($msgs);
+		Kint::dump($msg);
     }
 	
 	public static function aihealueet(){
