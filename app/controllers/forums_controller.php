@@ -41,8 +41,6 @@
 		  'sisalto' => $params['content']
 		));
 		
-		Kint::dump($params);
-		
 		$viesti->save();
 		Redirect::to('/keskustelu/' . $id, array('message' => 'Viesti lähetetty!'));
 	}
