@@ -12,11 +12,11 @@
     </thead>
 
     <tbody>
-	{% for aihealue in aihealueet %}
-		  <tr>
-			<td><a href="{{base_path}}/{{aihealue.id}}">{{aihealue.nimi}}</a></td>
-		  </tr>
-	  {% endfor %}
+		{% for aihealue in aihealueet %}
+			<tr>
+				<td><a href="{{base_path}}/keskustelut/{{aihealue.id}}">{{aihealue.nimi}}</a></td>
+			</tr>
+		{% endfor %}
     </tbody>
   </table>
   
