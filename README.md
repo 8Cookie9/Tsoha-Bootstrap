@@ -16,3 +16,4 @@ Yleisiä linkkejä:
 * [Keskustelunaiheet](http://kojaakko.users.cs.helsinki.fi/tsoha/keskustelut)
 * [Keskustelu](http://kojaakko.users.cs.helsinki.fi/tsoha/keskustelu)
 * [Sisäänkirjautuminen](http://kojaakko.users.cs.helsinki.fi/tsoha/login)
+* [Viestin muokkaaminen](http://kojaakko.users.cs.helsinki.fi/tsoha/editviesti/1)
