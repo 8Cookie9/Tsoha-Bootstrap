@@ -67,7 +67,7 @@
 		
 		$viesti->save();
 		
-		Redirect::to('/keskustelu/' . $keskustelu->id, array('message' => 'Viesti lähetetty!'));
+		Redirect::to('/keskustelu/' . $keskustelu->id);
 	}
 	
 	public static function login(){
