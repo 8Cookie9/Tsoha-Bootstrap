@@ -64,4 +64,12 @@
 			$row = $query->fetch();
 			$this->id = $row['id'];
 		}
+		
+		public function validate_otsikko(){
+		  $errors = array();
+		  if($this->otsikko == '' || $this->otsikko == null){
+			$errors[] = 'Otsikko ei saa olla tyhjä!';
+		  }
+		  return $errors;
+		}
 	}

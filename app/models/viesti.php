@@ -65,4 +65,12 @@
 			$query = DB::connection()->prepare('INSERT INTO Viesti (keskustelu_id, kayttaja_id, sisalto) VALUES (:keskustelu_id, :kayttaja_id, :sisalto)');
 			$query->execute(array('keskustelu_id' => $this->keskustelu_id, 'kayttaja_id' => $this->kayttaja_id, 'sisalto' => $this->sisalto));
 		}
+		
+		public function validate_sisalto(){
+		  $errors = array();
+		  if($this->sisalto == '' || $this->sisalto == null){
+			$errors[] = 'Viesti ei saa olla tyhjä!';
+		  }
+		  return $errors;
+		}
 	}
