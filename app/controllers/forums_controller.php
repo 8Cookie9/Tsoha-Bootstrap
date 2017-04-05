@@ -45,6 +45,12 @@
 		  'sisalto' => $params['content']
 		));
 		
+		$errors = $viesti->validate_otsikko();
+		if(count($errors) > 0){
+		  echo 'Viesti on liian lyhyt!';
+		  return;
+		}
+		
 		$viesti->save();
 		Redirect::to('/keskustelu/' . $id, array('message' => 'Viesti lähetetty!'));
 	}
