@@ -1,8 +1,12 @@
 <?php
 
   $routes->post('/keskustelu/:id', function($id){
-    ForumsController::store($id);
-  });	
+    ForumsController::storeViesti($id);
+  });
+
+$routes->post('/keskustelut/:id', function($id){
+    ForumsController::storeKeskustelu($id);
+  });  
 
   $routes->get('/', function() {
     ForumsController::aihealueet();

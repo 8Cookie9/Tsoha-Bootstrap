@@ -37,7 +37,7 @@
 		View::make('suunnitelmat/keskustelu.html', array('keskustelu' => $keskustelu,'viestit' => $viestit,'kayttajat' => $kayttajat));
     }
 	
-	public static function store($id){
+	public static function storeViesti($id){
 		$params = $_POST;
 		$viesti = new Viesti(array(
 		  'keskustelu_id' => $id,
@@ -47,6 +47,27 @@
 		
 		$viesti->save();
 		Redirect::to('/keskustelu/' . $id, array('message' => 'Viesti lähetetty!'));
+	}
+	
+	public static function storeKeskustelu($id){
+		$params = $_POST;
+		$keskustelu = new Keskustelu(array(
+		  'aihealue_id' => $id,
+		  'kayttaja_id' => 1,
+		  'otsikko' => $params['otsikko']
+		));
+		
+		$keskustelu->save();
+		
+		$viesti = new Viesti(array(
+		  'keskustelu_id' => $keskustelu->id,
+		  'kayttaja_id' => 1,
+		  'sisalto' => $params['content']
+		));
+		
+		$viesti->save();
+		
+		Redirect::to('/keskustelu/' . $keskustelu->id, array('message' => 'Viesti lähetetty!'));
 	}
 	
 	public static function login(){

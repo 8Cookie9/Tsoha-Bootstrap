@@ -57,4 +57,9 @@
 		}
 		return null;
 	  }
+	  
+	  public function save(){
+			$query = DB::connection()->prepare('INSERT INTO Keskustelu (aihealue_id, kayttaja_id, otsikko) VALUES (:aihealue_id, :kayttaja_id, :otsikko)');
+			$query->execute(array('aihealue_id' => $this->aihealue_id, 'kayttaja_id' => $this->kayttaja_id, 'otsikko' => $this->otsikko));
+		}
 	}
