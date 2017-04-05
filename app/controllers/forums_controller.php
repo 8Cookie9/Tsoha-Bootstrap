@@ -57,23 +57,25 @@
 		  'otsikko' => $params['otsikko']
 		));
 		
-		$errors = $keskustelu->validate_otsikko();
-		if(count($errors) > 0){
-		  echo 'Otsikko on liian lyhyt!';
-		}
-		
-		$keskustelu->save();
-		
 		$viesti = new Viesti(array(
 		  'keskustelu_id' => $keskustelu->id,
 		  'kayttaja_id' => 1,
 		  'sisalto' => $params['content']
 		));
 		
+		$errors = $keskustelu->validate_otsikko();
+		if(count($errors) > 0){
+		  echo 'Otsikko on liian lyhyt!';
+		  return;
+		}
+		
 		$errors = $viesti->validate_otsikko();
 		if(count($errors) > 0){
 		  echo 'Viesti on liian lyhyt!';
+		  return;
 		}
+		
+		$keskustelu->save();
 		
 		$viesti->save();
 		
