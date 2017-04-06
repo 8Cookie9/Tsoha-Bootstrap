@@ -95,7 +95,7 @@
 		 $attributes = array(
 		  'id' => $id,
 		  'sisalto' => $params['content']
-		));
+		);
 
 		$viesti = new Viesti($attributes);
 		$errors = $viesti->errors();
@@ -114,7 +114,7 @@
 
 		 $attributes = array(
 		  'id' => $id
-		));
+		);
 
 		$viesti = new Viesti($attributes);
 		$viesti->destroy();
