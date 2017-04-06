@@ -2,10 +2,11 @@
 {% block content %}
   <h1>Muokkaa viestiä</h1>
 
-  <form>
+  <form method="post">
     <div class="form-group">
       <label>Viesti</label>
       <textarea class="form-control">
+	  {{viesti.sisalto}}
       </textarea>
     </div>
     <div class="form-group">

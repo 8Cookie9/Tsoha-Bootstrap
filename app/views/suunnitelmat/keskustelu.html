@@ -11,7 +11,7 @@
 	
 {% for viesti in viestit %}
   <div class="row" style="border: 1px solid;background-color:#f8f8f8;margin-bottom: 30px;">
-	<div class="col-xs-6" style="border-bottom: 1px solid;padding: 5px;">
+	<div class="col-xs-4" style="border-bottom: 1px solid;padding: 5px;">
 	<b>
 	{% for kayttaja in kayttajat %}
 		{% if kayttaja.id==viesti.kayttaja_id %}
@@ -20,7 +20,9 @@
 	{% endfor %}
 	</b>
 	</div>
-	<div class="col-xs-6" style="border-bottom: 1px solid;padding: 5px;">{{viesti.aika}}</div>
+	<div class="col-xs-4" style="border-bottom: 1px solid;padding: 5px;">{{viesti.aika}}</div>
+	<div class="col-xs-4" style="border-bottom: 1px solid;padding: 5px;">
+	<a href="{{base_path}}/editviesti/{{viesti.id}}" class="btn btn-default">Muokkaa</a></div>
 	<div class="col-xs-12" style="padding: 30px;">{{viesti.sisalto}}</div>
   </div>
 {% endfor %}

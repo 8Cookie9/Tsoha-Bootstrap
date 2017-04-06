@@ -21,7 +21,8 @@
     }
 	
 	public static function muokkaus($id){
-		View::make('suunnitelmat/muokkaus.html');
+		$viesti = Viesti::find($id);
+		View::make('suunnitelmat/muokkaus.html', array('viesti' => $viesti));
     }
 	
 	public static function keskustelut($id){
