@@ -98,8 +98,7 @@
 		);
 
 		$viesti = new Viesti($attributes);
-		$errors = $viesti->errors();
-
+		
 		$errors = $viesti->validate_sisalto();
 		if(count($errors) > 0){
 		  echo 'Viesti on liian lyhyt!';
