@@ -92,7 +92,7 @@
 	public static function update($id){
 		$params = $_POST;
 
-		 $attributes = array(
+		$attributes = array(
 		  'id' => $id,
 		  'sisalto' => $params['content']
 		);
