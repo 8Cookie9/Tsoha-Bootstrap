@@ -75,7 +75,7 @@
 		
 		public function destroy(){
 			$query = DB::connection()->prepare('DELETE FROM Viesti WHERE id=:id');
-			$query->execute(array('id' => this->id);
+			$query->execute(array('id' => $this->id);
 			$row = $query->fetch();
 			$this->keskustelu_id = $row['keskustelu_id'];
 		}
