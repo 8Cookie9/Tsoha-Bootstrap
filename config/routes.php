@@ -47,3 +47,11 @@ $routes->post('/keskustelut/:id', function($id){
   $routes->get('/login', function() {
     ForumsController::login();
   });
+  
+  $routes->get('/login', function(){
+    UserController::login();
+  });
+  
+  $routes->post('/login', function(){
+    UserController::handle_login();
+  });

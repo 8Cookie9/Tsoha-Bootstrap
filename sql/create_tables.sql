@@ -7,6 +7,7 @@ CREATE TABLE Aihealue(
 CREATE TABLE Kayttaja(
 	id SERIAL PRIMARY KEY,
 	nimi varchar(16) NOT NULL,
+	salasana varchar(16) NOT NULL,
 	admin boolean NOT NULL
 );
 

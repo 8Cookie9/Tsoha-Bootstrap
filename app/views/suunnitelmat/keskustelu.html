@@ -17,6 +17,8 @@
 	
 {% for viesti in viestit %}
   <div class="row" style="border: 1px solid;background-color:#f8f8f8;margin-bottom: 30px;">
+  
+	{% if kayttaja.id==user_logged_in.id or user_logged_in.admin %}
 	<div class="col-xs-3" style="border-bottom: 1px solid;padding: 12px;">
 	<b>
 	{% for kayttaja in kayttajat %}
@@ -31,6 +33,19 @@
 	<a href="{{base_path}}/editviesti/{{viesti.id}}" class="btn btn-default">Muokkaa</a></div>
 	<div class="col-xs-3" style="border-bottom: 1px solid;padding: 5px;">
 	<a href="{{base_path}}/deleteviesti/{{viesti.id}}" class="btn btn-default">Poista</a></div>
+	{% else %}
+	<div class="col-xs-8" style="border-bottom: 1px solid;padding: 12px;">
+	<b>
+	{% for kayttaja in kayttajat %}
+		{% if kayttaja.id==viesti.kayttaja_id %}
+			{{kayttaja.nimi}}
+		{% endif %}
+	{% endfor %}
+	</b>
+	</div>
+	<div class="col-xs-4" style="border-bottom: 1px solid;padding: 12px;">{{viesti.aika}}</div>
+	{% endif %}
+	
 	<div class="col-xs-12" style="padding: 30px;">{{viesti.sisalto}}</div>
   </div>
 {% endfor %}

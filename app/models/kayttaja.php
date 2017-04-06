@@ -1,6 +1,6 @@
 <?php
 	class Kayttaja extends BaseModel{
-		public $id, $nimi, $admin;
+		public $id, $nimi, $salasana, $admin;
 		
 		public function __construct($attributes){
 			parent::__construct($attributes);
@@ -16,6 +16,7 @@
 				$messages[] = new Kayttaja(array(
 					'id' => $row['id'],
 					'nimi' => $row['nimi'],
+					'salasana' => $row['salasana'],
 					'admin' => $row['admin']
 				));
 			}
@@ -31,6 +32,23 @@
 				$Kayttaja = new Kayttaja(array(
 					'id' => $row['id'],
 					'nimi' => $row['nimi'],
+					'salasana' => $row['salasana'],
+					'admin' => $row['admin']
+				));
+			return $Kayttaja;
+		}
+		return null;
+	  }
+	  
+	  public static function authenticate($username, $password){
+			$query = DB::connection()->prepare('SELECT * FROM Kayttaja WHERE nimi = :nimi AND salasana = :salasana LIMIT 1');
+			$query->execute(array('nimi' => $username, 'salasana' => $password));
+			$row = $query->fetch();
+			if($row){
+				$Kayttaja = new Kayttaja(array(
+					'id' => $row['id'],
+					'nimi' => $row['nimi'],
+					'salasana' => $row['salasana'],
 					'admin' => $row['admin']
 				));
 			return $Kayttaja;
