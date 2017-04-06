@@ -21,7 +21,12 @@
     <tbody>
 		{% for keskustelu in keskustelut %}
 			<tr>
-				<td><a href="{{base_path}}/keskustelu/{{keskustelu.id}}">{{keskustelu.otsikko}}</a></td>
+				<td>
+					<div class="col-xs-9">
+					<a href="{{base_path}}/keskustelu/{{keskustelu.id}}">{{keskustelu.otsikko}}</a></div>
+					<div class="col-xs-3">
+					<a href="{{base_path}}/deletekeskustelu/{{keskustelu.id}}" class="btn btn-default">Poista</a></div>
+				</td>
 			</tr>
 		{% endfor %}
     </tbody>

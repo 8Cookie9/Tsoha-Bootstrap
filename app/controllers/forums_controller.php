@@ -116,6 +116,18 @@
 		Redirect::to('/keskustelu/' . $viesti->keskustelu_id, array('message' => 'Viesti poistettu!'));
     }
 	
+	public static function destroyk($id){
+		$params = $_POST;
+
+		 $attributes = array(
+		  'id' => $id
+		);
+
+		$keskustelu = new Keskustelu($attributes);
+		$keskustelu->destroy();
+		Redirect::to('/keskustelut/' . $keskustelu->aihealue_id, array('message' => 'Keskustelu poistettu!'));
+    }
+	
 	public static function login(){
 		View::make('suunnitelmat/login.html');
     }

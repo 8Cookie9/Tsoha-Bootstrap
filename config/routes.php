@@ -40,6 +40,10 @@ $routes->post('/keskustelut/:id', function($id){
     ForumsController::destroy($id);
   });
   
+  $routes->get('/deletekeskustelu/:id', function($id) {
+    ForumsController::destroyk($id);
+  });
+  
   $routes->get('/login', function() {
     ForumsController::login();
   });

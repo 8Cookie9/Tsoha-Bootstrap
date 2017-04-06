@@ -65,6 +65,13 @@
 			$this->id = $row['id'];
 		}
 		
+		public function destroy(){
+			$query = DB::connection()->prepare('DELETE FROM Keskustelu WHERE id=:id RETURNING aihealue_id');
+			$query->execute(array('id' => $this->id));
+			$row = $query->fetch();
+			$this->aihealue_id = $row['aihealue_id'];
+		}
+		
 		public function validate_otsikko(){
 		  $errors = array();
 		  if($this->otsikko == '' || $this->otsikko == null){
