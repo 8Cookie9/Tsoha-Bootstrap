@@ -7,6 +7,12 @@
 </div>
 {% endif %}
 
+{% if message %}
+<div class="alert alert-danger">
+  {{error}}
+</div>
+{% endif %}
+
 <h1>{{keskustelu.otsikko}}</h1>
 	
 {% for viesti in viestit %}

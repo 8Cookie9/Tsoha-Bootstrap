@@ -1,5 +1,12 @@
 {% extends "base.html" %}
 {% block content %}
+
+{% if message %}
+<div class="alert alert-danger">
+  {{error}}
+</div>
+{% endif %}
+
   <h1>Muokkaa viestiä</h1>
 
   <form method="post">
