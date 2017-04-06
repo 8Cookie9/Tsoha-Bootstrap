@@ -92,7 +92,7 @@
 	public static function update($id){
 		$params = $_POST;
 
-		$viesti = new Viesti(array(
+		 $attributes = array(
 		  'id' => $id,
 		  'sisalto' => $params['content']
 		));
@@ -112,7 +112,7 @@
 	public static function destroy($id){
 		$params = $_POST;
 
-		$viesti = new Viesti(array(
+		 $attributes = array(
 		  'id' => $id
 		));
 
