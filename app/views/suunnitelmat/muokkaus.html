@@ -7,6 +7,10 @@ Kirjautunut sisään käyttäjänä <b>{{user_logged_in.nimi}}</b>
 <a href="{{base_path}}/login">
 <button type="button" class="btn btn-default">Vaihda käyttäjää</button>
 </a>
+{% else %}
+<a href="{{base_path}}/login">
+<button type="button" class="btn btn-default">Kirjaudu sisään</button>
+</a>
 {% endif %}
 
 {% if message %}

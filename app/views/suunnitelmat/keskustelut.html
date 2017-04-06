@@ -6,12 +6,10 @@ Kirjautunut sisään käyttäjänä <b>{{user_logged_in.nimi}}</b>
 <a href="{{base_path}}/login">
 <button type="button" class="btn btn-default">Vaihda käyttäjää</button>
 </a>
-{% endif %}
-
-{% if message %}
-<div class="alert alert-success">
-  {{message}}
-</div>
+{% else %}
+<a href="{{base_path}}/login">
+<button type="button" class="btn btn-default">Kirjaudu sisään</button>
+</a>
 {% endif %}
 
 {% if error %}
@@ -43,13 +41,14 @@ Kirjautunut sisään käyttäjänä <b>{{user_logged_in.nimi}}</b>
 					{% else %}
 					<div class="col-xs-12">
 					<a href="{{base_path}}/keskustelu/{{keskustelu.id}}">{{keskustelu.otsikko}}</a></div>
-					{% endif %}
+				{% endif %}
 				</td>
 			</tr>
 		{% endfor %}
     </tbody>
   </table>
   
+  {% if user_logged_in %}
   <h1>Lisää uusi Keskustelu</h1>
 
   <form method="post">
@@ -67,5 +66,5 @@ Kirjautunut sisään käyttäjänä <b>{{user_logged_in.nimi}}</b>
       <button type="submit" class="btn btn-primary">Lähetä</button>
     </div>
   </form>
-  
+{% endif %}
 {% endblock %}

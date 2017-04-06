@@ -6,6 +6,10 @@ Kirjautunut sisään käyttäjänä <b>{{user_logged_in.nimi}}</b>
 <a href="{{base_path}}/login">
 <button type="button" class="btn btn-default">Vaihda käyttäjää</button>
 </a>
+{% else %}
+<a href="{{base_path}}/login">
+<button type="button" class="btn btn-default">Kirjaudu sisään</button>
+</a>
 {% endif %}
 
 {% if message %}
@@ -34,7 +38,17 @@ Kirjautunut sisään käyttäjänä <b>{{user_logged_in.nimi}}</b>
     <tbody>
 		{% for aihealue in aihealueet %}
 			<tr>
-				<td><a href="{{base_path}}/keskustelut/{{aihealue.id}}">{{aihealue.nimi}}</a></td>
+				<td>
+				{% if keskustelu.kayttaja_id==user_logged_in.id or user_logged_in.admin %}
+					<div class="col-xs-9">
+					<a href="{{base_path}}/keskustelut/{{aihealue.id}}">{{aihealue.nimi}}</a></div>
+					<div class="col-xs-3">
+					<a href="{{base_path}}/deleteaihealue/{{aihealue.id}}" class="btn btn-default">Poista</a></div>
+					{% else %}
+					<div class="col-xs-12">
+					<a href="{{base_path}}/keskustelut/{{aihealue.id}}">{{aihealue.nimi}}</a></div>
+				{% endif %}
+				</td>
 			</tr>
 		{% endfor %}
     </tbody>

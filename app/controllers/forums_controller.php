@@ -86,7 +86,7 @@
 		Redirect::to('/keskustelu/' . $keskustelu->id);
 	}
 	
-	public static function storeAihealue($id){
+	public static function storeAihealue(){
 		$params = $_POST;
 		$aihealue = new Aihealue(array(
 		  'nimi' => $params['nimi'],
@@ -97,8 +97,8 @@
 		  Redirect::to('/', array('error' => 'Viesti on liian lyhyt!'));
 		}
 		
-		$viesti->save();
-		Redirect::to('/keskustelut/' . $id, array('message' => 'Aihealue lisätty!'));
+		$aihealue->save();
+		Redirect::to('/keskustelut/' . $aihealue->id, array('message' => 'Aihealue lisätty!'));
 	}
 	
 	public static function update($id){
