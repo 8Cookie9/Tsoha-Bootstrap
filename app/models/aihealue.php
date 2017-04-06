@@ -44,16 +44,12 @@
 	}
 	
 	public function destroy(){
-		$query = DB::connection()->prepare('DELETE FROM Aihealue WHERE id=:id RETURNING id');
+		$query = DB::connection()->prepare('DELETE FROM Viesti WHERE keskustelu_id IN (SELECT id FROM Keskustelu where aihealue_id=:id)');
 		$query->execute(array('id' => $this->id));
-		$row = $query->fetch();
-		$aaid = $row['id'];
-		$query = DB::connection()->prepare('DELETE FROM Keskustelu WHERE aihealue_id=:id RETURNING id');
-		$query->execute(array('id' => $aaid));
-		$row = $query->fetch();
-		$kid = $row['id'];
-		$query = DB::connection()->prepare('DELETE FROM Viesti WHERE keskustelu_id=:id');
-		$query->execute(array('id' => $kid));
+		$query = DB::connection()->prepare('DELETE FROM Keskustelu WHERE aihealue_id=:id');
+		$query->execute(array('id' => $this->id));
+		$query = DB::connection()->prepare('DELETE FROM Aihealue WHERE id=:id');
+		$query->execute(array('id' => $this->id));
 	}
 	
 	public function validate_nimi(){
