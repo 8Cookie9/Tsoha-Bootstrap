@@ -2,8 +2,9 @@
 {% block content %}
 
 {% if user_logged_in %}
+Kirjautunut sisään käyttäjänä {{user_logged_in.nimi}}
 <a href="{{base_path}}/login">
-Kirjautunut sisään käyttäjänä {{user_logged_in.nimi}} <button type="button" class="btn btn-default">Vaihda käyttäjää</button>
+<button type="button" class="btn btn-default">Vaihda käyttäjää</button>
 </a>
 {% endif %}
 
