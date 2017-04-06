@@ -3,7 +3,7 @@
 
 {% if user_logged_in %}
 <a href="{{base_path}}/login">
-<button type="button" class="btn btn-default">{{user_logged_in.nimi}}</button>
+Kirjautunut sisään käyttäjänä {{user_logged_in.nimi}} <button type="button" class="btn btn-default">Vaihda käyttäjää</button>
 </a>
 {% endif %}
 
