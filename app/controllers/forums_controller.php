@@ -2,7 +2,6 @@
 	class ForumsController extends BaseController{
 
     public static function index(){
-      // make-metodi renderöi app/views-kansiossa sijaitsevia tiedostoja
    	  View::make('suunnitelmat/aihealueet.html');
     }
 
@@ -63,23 +62,24 @@
 		  'otsikko' => $params['otsikko']
 		));
 		
+		$errors = $keskustelu->validate_otsikko();
+		if(count($errors) > 0){
+		  Redirect::to('/keskustelut/' . $id, array('error' => $errors[0]));
+		}
+		
+		$keskustelu->save();
+		
 		$viesti = new Viesti(array(
 		  'keskustelu_id' => $keskustelu->id,
 		  'kayttaja_id' => self::get_user_logged_in()->id,
 		  'sisalto' => $params['content']
 		));
 		
-		$errors = $keskustelu->validate_otsikko();
-		if(count($errors) > 0){
-		  Redirect::to('/keskustelut/' . $id, array('error' => $errors[0]));
-		}
-		
 		$errors = $viesti->validate_sisalto();
 		if(count($errors) > 0){
+		  self::destroyk($keskustelu->id);
 		  Redirect::to('/keskustelut/' . $id, array('error' => $errors[0]));
 		}
-		
-		$keskustelu->save();
 		
 		$viesti->save();
 		
