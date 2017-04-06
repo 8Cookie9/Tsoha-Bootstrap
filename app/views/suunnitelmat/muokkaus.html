@@ -2,9 +2,9 @@
 {% block content %}
 
 
-{% if get_user_logged_in %}
+{% if user_logged_in %}
 <a href="{{base_path}}/login">
-<button type="button" class="btn btn-default">{{get_user_logged_in.nimi}}</button>
+<button type="button" class="btn btn-default">{{user_logged_in.nimi}}</button>
 </a>
 {% endif %}
 

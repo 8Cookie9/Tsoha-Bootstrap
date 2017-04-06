@@ -1,6 +1,12 @@
 {% extends "base.html" %}
 {% block content %}
 
+{% if user_logged_in %}
+<a href="{{base_path}}/login">
+<button type="button" class="btn btn-default">{{user_logged_in.nimi}}</button>
+</a>
+{% endif %}
+
 {% if message %}
 <div class="alert alert-success">
   {{message}}
