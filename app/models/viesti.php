@@ -66,6 +66,20 @@
 			$query->execute(array('keskustelu_id' => $this->keskustelu_id, 'kayttaja_id' => $this->kayttaja_id, 'sisalto' => $this->sisalto));
 		}
 		
+		public function update(){
+			$query = DB::connection()->prepare('UPDATE Viesti SET sisalto=_:sisalto WHERE id=:id RETURNING keskustelu_id');
+			$query->execute(array('id' => this->id, 'sisalto' => $this->sisalto));
+			$row = $query->fetch();
+			$this->keskustelu_id = $row['keskustelu_id'];
+		}
+		
+		public function destroy(){
+			$query = DB::connection()->prepare('DELETE FROM Viesti WHERE id=:id');
+			$query->execute(array('id' => this->id);
+			$row = $query->fetch();
+			$this->keskustelu_id = $row['keskustelu_id'];
+		}
+		
 		public function validate_sisalto(){
 		  $errors = array();
 		  if($this->sisalto == '' || $this->sisalto == null){

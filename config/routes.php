@@ -32,6 +32,14 @@ $routes->post('/keskustelut/:id', function($id){
     ForumsController::muokkaus($id);
   });
   
+  $routes->post('/editviesti/:id', function($id) {
+    ForumsController::update($id);
+  });
+  
+  $routes->get('/deleteviesti/:id', function($id) {
+    ForumsController::destroy($id);
+  });
+  
   $routes->get('/login', function() {
     ForumsController::login();
   });

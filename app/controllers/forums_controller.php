@@ -76,7 +76,7 @@
 		  return;
 		}
 		
-		$errors = $viesti->validate_otsikko();
+		$errors = $viesti->validate_sisalto();
 		if(count($errors) > 0){
 		  echo 'Viesti on liian lyhyt!';
 		  return;
@@ -88,6 +88,38 @@
 		
 		Redirect::to('/keskustelu/' . $keskustelu->id);
 	}
+	
+	public static function update($id){
+		$params = $_POST;
+
+		$viesti = new Viesti(array(
+		  'id' => $id,
+		  'sisalto' => $params['content']
+		));
+
+		$viesti = new Viesti($attributes);
+		$errors = $viesti->errors();
+
+		$errors = $viesti->validate_sisalto();
+		if(count($errors) > 0){
+		  echo 'Viesti on liian lyhyt!';
+		  return;
+		}
+		$viesti->update();
+		Redirect::to('/keskustelu/' . $viesti->keskustelu_id);
+    }
+	
+	public static function destroy($id){
+		$params = $_POST;
+
+		$viesti = new Viesti(array(
+		  'id' => $id
+		));
+
+		$viesti = new Viesti($attributes);
+		$viesti->destroy();
+		Redirect::to('/keskustelu/' . $viesti->keskustelu_id);
+    }
 	
 	public static function login(){
 		View::make('suunnitelmat/login.html');
