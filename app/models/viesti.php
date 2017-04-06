@@ -84,6 +84,8 @@
 		  $errors = array();
 		  if($this->sisalto == '' || $this->sisalto == null){
 			$errors[] = 'Viesti ei saa olla tyhjä!';
+		  }else if($this->sisalto->strlen < 5){
+			  $errors[] = 'Viesti on liian lyhyt!';
 		  }
 		  return $errors;
 		}

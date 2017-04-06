@@ -71,12 +71,12 @@
 		
 		$errors = $keskustelu->validate_otsikko();
 		if(count($errors) > 0){
-		  Redirect::to('/keskustelu/' . $id, array('error' => 'Otsikko on liian lyhyt!'));
+		  Redirect::to('/keskustelut/' . $id, array('error' => $errors[0]));
 		}
 		
 		$errors = $viesti->validate_sisalto();
 		if(count($errors) > 0){
-		  Redirect::to('/keskustelu/' . $id, array('error' => 'Viesti on liian lyhyt!'));
+		  Redirect::to('/keskustelut/' . $id, array('error' => $errors[0]));
 		}
 		
 		$keskustelu->save();
@@ -98,7 +98,7 @@
 		
 		$errors = $viesti->validate_sisalto();
 		if(count($errors) > 0){
-		  Redirect::to('/editviesti/' . $viesti->id, array('error' => 'Viesti on liian lyhyt!'));
+		  Redirect::to('/editviesti/' . $viesti->id, array('error' => $errors[0]));
 		}
 		$viesti->update();
 		Redirect::to('/keskustelu/' . $viesti->keskustelu_id, array('message' => 'Viestiä muokattu!'));
