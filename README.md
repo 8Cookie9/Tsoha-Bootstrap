@@ -17,3 +17,11 @@ Yleisiä linkkejä:
 * [Keskustelu](http://kojaakko.users.cs.helsinki.fi/tsoha/keskustelu)
 * [Sisäänkirjautuminen](http://kojaakko.users.cs.helsinki.fi/tsoha/login)
 * [Viestin muokkaaminen](http://kojaakko.users.cs.helsinki.fi/tsoha/editviesti/1)
+
+## Käyttäjätunnukset (käyttäjänimi - salasana)
+
+Ylläpitäjä: admin - admin
+
+Tavallinen käyttäjä1: user1 - pass1
+
+Tavallinen käyttäjä2: user2 - pass2
