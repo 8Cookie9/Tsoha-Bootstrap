@@ -28,10 +28,15 @@
 		{% for keskustelu in keskustelut %}
 			<tr>
 				<td>
+				{% if keskustelu.kayttaja_id==user_logged_in.id or user_logged_in.admin %}
 					<div class="col-xs-9">
 					<a href="{{base_path}}/keskustelu/{{keskustelu.id}}">{{keskustelu.otsikko}}</a></div>
 					<div class="col-xs-3">
 					<a href="{{base_path}}/deletekeskustelu/{{keskustelu.id}}" class="btn btn-default">Poista</a></div>
+					{% else %}
+					<div class="col-xs-12">
+					<a href="{{base_path}}/keskustelu/{{keskustelu.id}}">{{keskustelu.otsikko}}</a></div>
+					{% endif %}
 				</td>
 			</tr>
 		{% endfor %}
