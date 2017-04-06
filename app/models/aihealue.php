@@ -47,11 +47,11 @@
 		$query = DB::connection()->prepare('DELETE FROM Aihealue WHERE id=:id RETURNING id');
 		$query->execute(array('id' => $this->id));
 		$row = $query->fetch();
-		$aaid = $row['aihealue_id'];
+		$aaid = $row['id'];
 		$query = DB::connection()->prepare('DELETE FROM Keskustelu WHERE aihealue_id=:id RETURNING id');
 		$query->execute(array('id' => $aaid));
 		$row = $query->fetch();
-		$kid = $row['aihealue_id'];
+		$kid = $row['id'];
 		$query = DB::connection()->prepare('DELETE FROM Viesti WHERE keskustelu_id=:id');
 		$query->execute(array('id' => $kid));
 	}
