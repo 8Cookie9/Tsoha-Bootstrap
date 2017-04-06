@@ -150,7 +150,7 @@
 		  'id' => $id
 		);
 
-		$aihealue = new Keskustelu($attributes);
+		$aihealue = new Aihealue($attributes);
 		$aihealue->destroy();
 		Redirect::to('/' , array('message' => 'Aihealue poistettu!'));
     }

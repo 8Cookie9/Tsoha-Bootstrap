@@ -39,7 +39,7 @@ Kirjautunut sisään käyttäjänä <b>{{user_logged_in.nimi}}</b>
 		{% for aihealue in aihealueet %}
 			<tr>
 				<td>
-				{% if keskustelu.kayttaja_id==user_logged_in.id or user_logged_in.admin %}
+				{% if user_logged_in.admin %}
 					<div class="col-xs-9">
 					<a href="{{base_path}}/keskustelut/{{aihealue.id}}">{{aihealue.nimi}}</a></div>
 					<div class="col-xs-3">
