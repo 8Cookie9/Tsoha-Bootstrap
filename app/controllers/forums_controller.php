@@ -105,7 +105,7 @@
 		  return;
 		}
 		$viesti->update();
-		Redirect::to('/keskustelu/' . $viesti->keskustelu_id);
+		Redirect::to('/keskustelu/' . $viesti->keskustelu_id, array('message' => 'Viestiä muokattu!'));
     }
 	
 	public static function destroy($id){
@@ -117,7 +117,7 @@
 
 		$viesti = new Viesti($attributes);
 		$viesti->destroy();
-		Redirect::to('/keskustelu/' . $viesti->keskustelu_id);
+		Redirect::to('/keskustelu/' . $viesti->keskustelu_id, array('message' => 'Viesti poistettu!'));
     }
 	
 	public static function login(){
