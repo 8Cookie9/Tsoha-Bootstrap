@@ -18,7 +18,7 @@
 {% for viesti in viestit %}
   <div class="row" style="border: 1px solid;background-color:#f8f8f8;margin-bottom: 30px;">
   
-	{% if kayttaja.id==user_logged_in.id or user_logged_in.admin %}
+	{% if viesti.kayttaja_id==user_logged_in.id or user_logged_in.admin %}
 	<div class="col-xs-3" style="border-bottom: 1px solid;padding: 12px;">
 	<b>
 	{% for kayttaja in kayttajat %}
