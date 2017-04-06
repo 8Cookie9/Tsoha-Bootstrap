@@ -46,7 +46,7 @@
 		  'sisalto' => $params['content']
 		));
 		
-		$errors = $viesti->validate_otsikko();
+		$errors = $viesti->validate_sisalto();
 		if(count($errors) > 0){
 		  echo 'Viesti on liian lyhyt!';
 		  return;
