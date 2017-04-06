@@ -80,5 +80,5 @@
 			$errors[] = 'Otsikko ei saa olla tyhjä!';
 		}
 		return $errors;
-		}
 	}
+}

@@ -92,9 +92,9 @@
 		  'nimi' => $params['nimi'],
 		));
 		
-		$errors = $aihealue->validate_sisalto();
+		$errors = $aihealue->validate_nimi();
 		if(count($errors) > 0){
-		  Redirect::to('/', array('error' => 'Viesti on liian lyhyt!'));
+		  Redirect::to('/', array('error' => 'Nimi on liian lyhyt!'));
 		}
 		
 		$aihealue->save();

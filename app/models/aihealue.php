@@ -55,4 +55,12 @@
 		$query = DB::connection()->prepare('DELETE FROM Viesti WHERE keskustelu_id=:id');
 		$query->execute(array('id' => $kid));
 	}
+	
+	public function validate_nimi(){
+		$errors = array();
+		if($this->nimi == '' || $this->nimi == null){
+			$errors[] = 'Nimi ei saa olla tyhjä!';
+		}
+		return $errors;
 	}
+}
