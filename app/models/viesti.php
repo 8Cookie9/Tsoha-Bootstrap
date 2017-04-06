@@ -67,7 +67,7 @@
 		}
 		
 		public function update(){
-			$query = DB::connection()->prepare('UPDATE Viesti SET sisalto=_:sisalto WHERE id=:id RETURNING keskustelu_id');
+			$query = DB::connection()->prepare('UPDATE Viesti SET sisalto=:sisalto WHERE id=:id RETURNING keskustelu_id');
 			$query->execute(array('id' => this->id, 'sisalto' => $this->sisalto));
 			$row = $query->fetch();
 			$this->keskustelu_id = $row['keskustelu_id'];
