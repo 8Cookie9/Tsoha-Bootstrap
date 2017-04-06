@@ -42,7 +42,7 @@
 			return $keskustelut;
 		}
 		
-		public static function find($id){
+	public static function find($id){
 			$query = DB::connection()->prepare('SELECT * FROM Keskustelu WHERE id = :id LIMIT 1');
 			$query->execute(array('id' => $id));
 			$row = $query->fetch();
@@ -58,25 +58,27 @@
 		return null;
 	  }
 	  
-	  public function save(){
-			$query = DB::connection()->prepare('INSERT INTO Keskustelu (aihealue_id, kayttaja_id, otsikko) VALUES (:aihealue_id, :kayttaja_id, :otsikko) RETURNING id');
-			$query->execute(array('aihealue_id' => $this->aihealue_id, 'kayttaja_id' => $this->kayttaja_id, 'otsikko' => $this->otsikko));
-			$row = $query->fetch();
-			$this->id = $row['id'];
-		}
-		
-		public function destroy(){
-			$query = DB::connection()->prepare('DELETE FROM Keskustelu WHERE id=:id RETURNING aihealue_id');
-			$query->execute(array('id' => $this->id));
-			$row = $query->fetch();
-			$this->aihealue_id = $row['aihealue_id'];
-		}
-		
-		public function validate_otsikko(){
-		  $errors = array();
-		  if($this->otsikko == '' || $this->otsikko == null){
+	public function save(){
+		$query = DB::connection()->prepare('INSERT INTO Keskustelu (aihealue_id, kayttaja_id, otsikko) VALUES (:aihealue_id, :kayttaja_id, :otsikko) RETURNING id');
+		$query->execute(array('aihealue_id' => $this->aihealue_id, 'kayttaja_id' => $this->kayttaja_id, 'otsikko' => $this->otsikko));
+		$row = $query->fetch();
+		$this->id = $row['id'];
+	}
+	
+	public function destroy(){
+		$query = DB::connection()->prepare('DELETE FROM Viesti WHERE keskustelu_id=:id');
+		$query->execute(array('id' => $this->id));
+		$query = DB::connection()->prepare('DELETE FROM Keskustelu WHERE id=:id RETURNING aihealue_id');
+		$query->execute(array('id' => $this->id));
+		$row = $query->fetch();
+		$this->aihealue_id = $row['aihealue_id'];
+	}
+	
+	public function validate_otsikko(){
+		$errors = array();
+		if($this->otsikko == '' || $this->otsikko == null){
 			$errors[] = 'Otsikko ei saa olla tyhjä!';
-		  }
-		  return $errors;
+		}
+		return $errors;
 		}
 	}

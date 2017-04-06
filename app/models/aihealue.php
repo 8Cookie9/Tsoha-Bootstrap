@@ -35,4 +35,24 @@
 		}
 		return null;
 	  }
+	  
+	  public function save(){
+		$query = DB::connection()->prepare('INSERT INTO Aihealue (nimi) VALUES (:nimi) RETURNING id');
+		$query->execute(array('nimi' => $this->nimi));
+		$row = $query->fetch();
+		$this->id = $row['id'];
+	}
+	
+	public function destroy(){
+		$query = DB::connection()->prepare('DELETE FROM Aihealue WHERE id=:id RETURNING id');
+		$query->execute(array('id' => $this->id));
+		$row = $query->fetch();
+		$aaid = $row['aihealue_id'];
+		$query = DB::connection()->prepare('DELETE FROM Keskustelu WHERE aihealue_id=:id RETURNING id');
+		$query->execute(array('id' => $aaid));
+		$row = $query->fetch();
+		$kid = $row['aihealue_id'];
+		$query = DB::connection()->prepare('DELETE FROM Viesti WHERE keskustelu_id=:id');
+		$query->execute(array('id' => $kid));
+	}
 	}

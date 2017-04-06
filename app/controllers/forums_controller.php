@@ -86,6 +86,21 @@
 		Redirect::to('/keskustelu/' . $keskustelu->id);
 	}
 	
+	public static function storeAihealue($id){
+		$params = $_POST;
+		$aihealue = new Aihealue(array(
+		  'nimi' => $params['nimi'],
+		));
+		
+		$errors = $aihealue->validate_sisalto();
+		if(count($errors) > 0){
+		  Redirect::to('/', array('error' => 'Viesti on liian lyhyt!'));
+		}
+		
+		$viesti->save();
+		Redirect::to('/keskustelut/' . $id, array('message' => 'Aihealue lisätty!'));
+	}
+	
 	public static function update($id){
 		$params = $_POST;
 
@@ -126,6 +141,18 @@
 		$keskustelu = new Keskustelu($attributes);
 		$keskustelu->destroy();
 		Redirect::to('/keskustelut/' . $keskustelu->aihealue_id, array('message' => 'Keskustelu poistettu!'));
+    }
+	
+	public static function destroya($id){
+		$params = $_POST;
+
+		 $attributes = array(
+		  'id' => $id
+		);
+
+		$aihealue = new Keskustelu($attributes);
+		$aihealue->destroy();
+		Redirect::to('/' , array('message' => 'Aihealue poistettu!'));
     }
 	
 	public static function login(){

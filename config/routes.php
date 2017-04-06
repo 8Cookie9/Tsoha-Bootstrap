@@ -4,9 +4,17 @@
     ForumsController::storeViesti($id);
   });
 
-$routes->post('/keskustelut/:id', function($id){
+  $routes->post('/keskustelut/:id', function($id){
     ForumsController::storeKeskustelu($id);
-  });  
+  });
+
+  $routes->post('/', function(){
+    ForumsController::storeAihealue();
+  });
+  
+  $routes->post('/aihealueet', function(){
+    ForumsController::storeAihealue();
+  });
 
   $routes->get('/', function() {
     ForumsController::aihealueet();
@@ -42,6 +50,10 @@ $routes->post('/keskustelut/:id', function($id){
   
   $routes->get('/deletekeskustelu/:id', function($id) {
     ForumsController::destroyk($id);
+  });
+  
+  $routes->get('/deleteaihealue/:id', function($id) {
+    ForumsController::destroya($id);
   });
   
   $routes->get('/login', function() {
