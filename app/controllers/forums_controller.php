@@ -42,7 +42,7 @@
 		$params = $_POST;
 		$viesti = new Viesti(array(
 		  'keskustelu_id' => $id,
-		  'kayttaja_id' => 1,
+		  'kayttaja_id' => self::get_user_logged_in()->id,
 		  'sisalto' => $params['content']
 		));
 		
@@ -59,13 +59,13 @@
 		$params = $_POST;
 		$keskustelu = new Keskustelu(array(
 		  'aihealue_id' => $id,
-		  'kayttaja_id' => 1,
+		  'kayttaja_id' => self::get_user_logged_in()->id,
 		  'otsikko' => $params['otsikko']
 		));
 		
 		$viesti = new Viesti(array(
 		  'keskustelu_id' => $keskustelu->id,
-		  'kayttaja_id' => 1,
+		  'kayttaja_id' => self::get_user_logged_in()->id,
 		  'sisalto' => $params['content']
 		));
 		
