@@ -75,10 +75,10 @@
 		  'sisalto' => $params['content']
 		));
 		
-		$errors = $viesti->errors();
+		$errors = array_merge($errors,$viesti->errors());
 		if(count($errors) > 0){
 		  self::destroyk($keskustelu->id);
-		  Redirect::to('/keskustelut/' . $id, array('error' => $errors[0], 'content' => $params['content']));
+		  Redirect::to('/keskustelut/' . $id, array('errors' => $errors, 'content' => $params['content']));
 		}
 		
 		$viesti->save();
