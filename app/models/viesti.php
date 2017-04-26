@@ -1,6 +1,6 @@
 <?php
 	class Viesti extends BaseModel{
-		public $id, $keskustelu_id, $kayttaja_id, $viesti_id, $sisalto, $aika, ¤validators;
+		public $id, $keskustelu_id, $kayttaja_id, $viesti_id, $sisalto, $aika, $validators;
 		
 		public function __construct($attributes){
 			parent::__construct($attributes);
