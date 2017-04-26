@@ -3,7 +3,11 @@
 	function check_logged_in(){
 		BaseController::check_logged_in();
 	}
-
+	
+	$routes->post('/logout', function(){
+		UserController::logout();
+	});
+	
   $routes->post('/keskustelu/:id', 'check_logged_in', function($id){
     ForumsController::storeViesti($id);
   });
