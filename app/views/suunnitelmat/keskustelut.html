@@ -56,7 +56,7 @@ Kirjautunut sisään käyttäjänä <b>{{user_logged_in.nimi}}</b>
     </tbody>
   </table>
   
-  {% if user_logged_in %}
+{% if user_logged_in %}
   <h1>Lisää uusi keskustelu</h1>
 
   <form method="post">
@@ -67,7 +67,7 @@ Kirjautunut sisään käyttäjänä <b>{{user_logged_in.nimi}}</b>
 	
     <div class="form-group">
       <label>Viesti</label>
-      <textarea name="content" class="form-control">
+      <textarea name="content" class="form-control" value="">
 	  {{content}}
       </textarea>
     </div>
