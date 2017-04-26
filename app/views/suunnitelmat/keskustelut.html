@@ -62,13 +62,12 @@ Kirjautunut sisään käyttäjänä <b>{{user_logged_in.nimi}}</b>
   <form method="post">
 	<div class="form-group">
       <label>Otsikko</label>
-      <input type="text" name="otsikko" class="form-control" value={{otsikko}}>
+      <input type="text" name="otsikko" class="form-control" value="{{otsikko}}">
     </div>
 	
     <div class="form-group">
       <label>Viesti</label>
-      <textarea name="content" class="form-control" value="">
-	  {{content}}
+      <textarea name="content" class="form-control" value="{{content}}">
       </textarea>
     </div>
     <div class="form-group">
