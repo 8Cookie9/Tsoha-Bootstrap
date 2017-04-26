@@ -1,22 +1,22 @@
 <?php
 
-  $routes->post('/keskustelu/:id', function($id){
+  $routes->post('/keskustelu/:id', 'check_logged_in', function($id){
     ForumsController::storeViesti($id);
   });
 
-  $routes->post('/keskustelut/:id', function($id){
+  $routes->post('/keskustelut/:id', 'check_logged_in', function($id){
     ForumsController::storeKeskustelu($id);
   });
 
-  $routes->post('/', function(){
+  $routes->post('/', 'check_logged_in', function(){
     ForumsController::storeAihealue();
   });
   
-  $routes->post('/aihealueet', function(){
+  $routes->post('/aihealueet', 'check_logged_in', function(){
     ForumsController::storeAihealue();
   });
 
-  $routes->get('/', function() {
+  $routes->get('/', 'check_logged_in', function() {
     ForumsController::aihealueet();
   });
 
@@ -24,35 +24,35 @@
     ForumsController::sandbox();
   });
   
-  $routes->get('/aihealueet', function() {
+  $routes->get('/aihealueet', 'check_logged_in', function() {
     ForumsController::aihealueet();
   });
   
-  $routes->get('/keskustelut/:id', function($id) {
+  $routes->get('/keskustelut/:id', 'check_logged_in', function($id) {
     ForumsController::keskustelut($id);
   });
   
-  $routes->get('/keskustelu/:id', function($id) {
+  $routes->get('/keskustelu/:id', 'check_logged_in', function($id) {
     ForumsController::keskustelu($id);
   });
   
-  $routes->get('/editviesti/:id', function($id) {
+  $routes->get('/editviesti/:id', 'check_logged_in', function($id) {
     ForumsController::muokkaus($id);
   });
   
-  $routes->post('/editviesti/:id', function($id) {
+  $routes->post('/editviesti/:id', 'check_logged_in', function($id) {
     ForumsController::update($id);
   });
   
-  $routes->get('/deleteviesti/:id', function($id) {
+  $routes->get('/deleteviesti/:id', 'check_logged_in', function($id) {
     ForumsController::destroy($id);
   });
   
-  $routes->get('/deletekeskustelu/:id', function($id) {
+  $routes->get('/deletekeskustelu/:id', 'check_logged_in', function($id) {
     ForumsController::destroyk($id);
   });
   
-  $routes->get('/deleteaihealue/:id', function($id) {
+  $routes->get('/deleteaihealue/:id', 'check_logged_in', function($id) {
     ForumsController::destroya($id);
   });
   
