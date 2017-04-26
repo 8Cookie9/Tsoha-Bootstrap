@@ -71,7 +71,7 @@
 		$errors = $keskustelu->errors();
 		$errors = array_merge($errors, $viesti->errors());
 		if(count($errors) > 0){
-		  Redirect::to('/keskustelut/' . $id, array('errors' => $errors, 'otsikko' => $params['otsikko']));
+		  Redirect::to('/keskustelut/' . $id, array('errors' => $errors, 'otsikko' => $params['otsikko'], 'content' => $params['content']));
 		}
 		
 		$keskustelu->save();
