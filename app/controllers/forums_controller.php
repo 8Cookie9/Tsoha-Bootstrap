@@ -62,24 +62,19 @@
 		  'otsikko' => $params['otsikko']
 		));
 		
-		$errors = $keskustelu->validate_otsikko();
-		if(count($errors) > 0){
-		  Redirect::to('/keskustelut/' . $id, array('errors' => $errors, 'otsikko' => $params['otsikko']));
-		}
-		
-		$keskustelu->save();
-		
 		$viesti = new Viesti(array(
 		  'keskustelu_id' => $keskustelu->id,
 		  'kayttaja_id' => self::get_user_logged_in()->id,
 		  'sisalto' => $params['content']
 		));
 		
-		$errors = $viesti->errors();
+		$errors = $keskustelu->errors();
+		$errors = array_merge($errors, $viesti->errors());
 		if(count($errors) > 0){
-		  self::destroyk($keskustelu->id);
-		  Redirect::to('/keskustelut/' . $id, array('error' => $errors[0]));
+		  Redirect::to('/keskustelut/' . $id, array('errors' => $errors, 'otsikko' => $params['otsikko']));
 		}
+		
+		$keskustelu->save();
 		
 		$viesti->save();
 		
