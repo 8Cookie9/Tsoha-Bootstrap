@@ -24,6 +24,18 @@ Kirjautunut sisään käyttäjänä <b>{{user_logged_in.nimi}}</b>
 </div>
 {% endif %}
 
+{% if errors %}
+    <div class="alert alert-danger">
+      <ul>
+        {% for error in errors %}
+          <div class="alert alert-danger">
+			{{error}}
+		</div>
+        {% endfor %}
+      </ul>
+    </div>
+{% endif %}
+
 <h1>{{keskustelu.otsikko}}</h1>
 	
 {% for viesti in viestit %}
@@ -68,6 +80,7 @@ Kirjautunut sisään käyttäjänä <b>{{user_logged_in.nimi}}</b>
     <div class="form-group">
       <label>Viesti</label>
       <textarea name="content" class="form-control">
+	  {{content}}
       </textarea>
     </div>
     <div class="form-group">

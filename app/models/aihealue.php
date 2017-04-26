@@ -1,9 +1,10 @@
 <?php
 	class Aihealue extends BaseModel{
-		public $id, $nimi;
+		public $id, $nimi, $validators;
 		
 		public function __construct($attributes){
 			parent::__construct($attributes);
+			$this->validators = array('validate_nimi');
 		}
 		
 		public static function all(){

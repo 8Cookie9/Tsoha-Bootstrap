@@ -18,6 +18,18 @@ Kirjautunut sisään käyttäjänä <b>{{user_logged_in.nimi}}</b>
 </div>
 {% endif %}
 
+{% if errors %}
+    <div class="alert alert-danger">
+      <ul>
+        {% for error in errors %}
+          <div class="alert alert-danger">
+			{{error}}
+		</div>
+        {% endfor %}
+      </ul>
+    </div>
+{% endif %}
+
   <h1>Keskustelut</h1>
 
   <a href="#" class="btn btn-default">Hae keskusteluja</a>
@@ -54,12 +66,13 @@ Kirjautunut sisään käyttäjänä <b>{{user_logged_in.nimi}}</b>
   <form method="post">
 	<div class="form-group">
       <label>Otsikko</label>
-      <input type="text" name="otsikko" class="form-control">
+      <input type="text" name="otsikko" class="form-control" value={{otsikko}}>
     </div>
 	
     <div class="form-group">
       <label>Viesti</label>
       <textarea name="content" class="form-control">
+	  {{content}}
       </textarea>
     </div>
     <div class="form-group">

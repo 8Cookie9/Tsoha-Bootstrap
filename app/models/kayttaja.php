@@ -1,9 +1,10 @@
 <?php
 	class Kayttaja extends BaseModel{
-		public $id, $nimi, $salasana, $admin;
+		public $id, $nimi, $salasana, $admin, $validators;
 		
 		public function __construct($attributes){
 			parent::__construct($attributes);
+			$this->validators = array('validate_nimi');
 		}
 		
 		public static function all(){
@@ -55,4 +56,12 @@
 		}
 		return null;
 	  }
+	  
+	  public function validate_nimi(){
+		$errors = array();
+		if($this->nimi == '' || $this->nimi == null){
+			$errors[] = 'Nimi ei saa olla tyhjä!';
+		}
+		return $errors;
+	}
 	}

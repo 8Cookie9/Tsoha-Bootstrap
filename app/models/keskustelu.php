@@ -1,9 +1,10 @@
 <?php
 	class Keskustelu extends BaseModel{
-		public $id, $kayttaja_id, $aihealue_id, $otsikko;
+		public $id, $kayttaja_id, $aihealue_id, $otsikko, $validators;
 		
 		public function __construct($attributes){
 			parent::__construct($attributes);
+			$this->validators = array('validate_otsikko');
 		}
 		
 		public static function all(){

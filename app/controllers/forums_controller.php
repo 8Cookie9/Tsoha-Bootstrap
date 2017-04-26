@@ -45,13 +45,13 @@
 		  'sisalto' => $params['content']
 		));
 		
-		$errors = $viesti->validate_sisalto();
+		$errors = $viesti->errors();
 		if(count($errors) > 0){
-		  Redirect::to('/keskustelu/' . $id, array('error' => 'Viesti on liian lyhyt!'));
+		  Redirect::to('/keskustelu/' . $id, array('errors' => $errors, 'content' => $params['content']));
 		}
 		
 		$viesti->save();
-		Redirect::to('/keskustelu/' . $id, array('message' => 'Viesti lähetetty!'));
+		Redirect::to('/keskustelu/' . $id, array('message' => 'Viesti lähetetty!', 'content' => $params['content']));
 	}
 	
 	public static function storeKeskustelu($id){
@@ -64,7 +64,7 @@
 		
 		$errors = $keskustelu->validate_otsikko();
 		if(count($errors) > 0){
-		  Redirect::to('/keskustelut/' . $id, array('error' => $errors[0]));
+		  Redirect::to('/keskustelut/' . $id, array('errors' => $errors, 'otsikko' => $params['otsikko']));
 		}
 		
 		$keskustelu->save();
@@ -75,7 +75,7 @@
 		  'sisalto' => $params['content']
 		));
 		
-		$errors = $viesti->validate_sisalto();
+		$errors = $viesti->errors();
 		if(count($errors) > 0){
 		  self::destroyk($keskustelu->id);
 		  Redirect::to('/keskustelut/' . $id, array('error' => $errors[0]));
@@ -92,9 +92,9 @@
 		  'nimi' => $params['nimi'],
 		));
 		
-		$errors = $aihealue->validate_nimi();
+		$errors = $aihealue->errors();
 		if(count($errors) > 0){
-		  Redirect::to('/', array('error' => 'Nimi on liian lyhyt!'));
+		  Redirect::to('/', array('error' => $errors, 'nimi' => $params['nimi']));
 		}
 		
 		$aihealue->save();
@@ -111,9 +111,9 @@
 
 		$viesti = new Viesti($attributes);
 		
-		$errors = $viesti->validate_sisalto();
+		$errors = $viesti->errors();
 		if(count($errors) > 0){
-		  Redirect::to('/editviesti/' . $viesti->id, array('error' => $errors[0]));
+		  Redirect::to('/editviesti/' . $viesti->id, array('errors' => $errors, 'content' => $params['content']));
 		}
 		$viesti->update();
 		Redirect::to('/keskustelu/' . $viesti->keskustelu_id, array('message' => 'Viestiä muokattu!'));
@@ -122,7 +122,7 @@
 	public static function destroy($id){
 		$params = $_POST;
 
-		 $attributes = array(
+		$attributes = array(
 		  'id' => $id
 		);
 
@@ -134,7 +134,7 @@
 	public static function destroyk($id){
 		$params = $_POST;
 
-		 $attributes = array(
+		$attributes = array(
 		  'id' => $id
 		);
 
@@ -146,7 +146,7 @@
 	public static function destroya($id){
 		$params = $_POST;
 
-		 $attributes = array(
+		$attributes = array(
 		  'id' => $id
 		);
 
