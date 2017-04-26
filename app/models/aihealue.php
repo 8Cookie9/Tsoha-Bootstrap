@@ -56,7 +56,10 @@
 	public function validate_nimi(){
 		$errors = array();
 		if($this->nimi == '' || $this->nimi == null){
-			$errors[] = 'Nimi ei saa olla tyhjä!';
+			$errors[] = 'Otsikko ei saa olla tyhjä!';
+		}
+		if(strlen($this->nimi) < 4){
+			$errors[] = 'Otsikko on liian lyhyt (alle 4 merkkiä)!';
 		}
 		return $errors;
 	}

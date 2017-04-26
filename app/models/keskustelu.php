@@ -80,6 +80,9 @@
 		if($this->otsikko == '' || $this->otsikko == null){
 			$errors[] = 'Otsikko ei saa olla tyhjä!';
 		}
+		if(strlen($this->otsikko) < 4){
+			$errors[] = 'Otsikko on liian lyhyt (alle 4 merkkiä)!';
+		}
 		return $errors;
 	}
 }
