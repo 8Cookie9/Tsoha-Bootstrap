@@ -65,24 +65,24 @@
 		$errors = $keskustelu->errors();
 		if(count($errors) > 0){
 		  Redirect::to('/keskustelut/' . $id, array('errors' => $errors, 'otsikko' => $params['otsikko']));
+		}else{
+			$keskustelu->save();
+		
+			$viesti = new Viesti(array(
+			  'keskustelu_id' => $keskustelu->id,
+			  'kayttaja_id' => self::get_user_logged_in()->id,
+			  'sisalto' => $params['content']
+			));
+			
+			$errors = array_merge($errors, $viesti->errors());
+			if(count($errors) > 0){
+			  Redirect::to('/keskustelu/' . $keskustelu->id);
+			}else{
+				$viesti->save();
+			
+				Redirect::to('/keskustelu/' . $keskustelu->id);
+			}
 		}
-		
-		$keskustelu->save();
-		
-		$viesti = new Viesti(array(
-		  'keskustelu_id' => $keskustelu->id,
-		  'kayttaja_id' => self::get_user_logged_in()->id,
-		  'sisalto' => $params['content']
-		));
-		
-		$errors = array_merge($errors, $viesti->errors());
-		if(count($errors) > 0){
-		  Redirect::to('/keskustelu/' . $keskustelu->id);
-		}
-		
-		$viesti->save();
-		
-		Redirect::to('/keskustelu/' . $keskustelu->id);
 	}
 	
 	public static function storeAihealue(){
