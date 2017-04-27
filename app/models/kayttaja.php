@@ -76,6 +76,10 @@
 		$query = DB::connection()->prepare('SELECT keskustelu_id FROM Luettu WHERE kayttaja_id = :kayttaja_id');
 		$query->execute(array('kayttaja_id' => $this->id));
 		$rows = $query->fetchAll();
-		return $rows;
+		$luettu=array();
+		foreach($rows as $row){
+			$luettu[]=$row['kayttaja_id'];
+		}
+		return $luettu;
 	}
 }
