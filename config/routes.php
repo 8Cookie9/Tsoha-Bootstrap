@@ -9,19 +9,19 @@
 	});
 	
   $routes->post('/keskustelu/:id', 'check_logged_in', function($id){
-    ForumsController::storeViesti($id);
+    ViestiController::storeViesti($id);
   });
 
   $routes->post('/keskustelut/:id', 'check_logged_in', function($id){
-    ForumsController::storeKeskustelu($id);
+    KeskusteluController::store($id);
   });
 
   $routes->post('/', 'check_logged_in', function(){
-    ForumsController::storeAihealue();
+    AihealueController::store();
   });
   
   $routes->post('/aihealueet', 'check_logged_in', function(){
-    ForumsController::storeAihealue();
+    AihealueController::store();
   });
 
   $routes->get('/', 'check_logged_in', function() {
@@ -51,19 +51,19 @@
   });
   
   $routes->post('/editviesti/:id', 'check_logged_in', function($id) {
-    ForumsController::update($id);
+    ViestiController::update($id);
   });
   
   $routes->get('/deleteviesti/:id', 'check_logged_in', function($id) {
-    ForumsController::destroy($id);
+    ViestiController::destroy($id);
   });
   
   $routes->get('/deletekeskustelu/:id', 'check_logged_in', function($id) {
-    ForumsController::destroyk($id);
+    KeskusteluController::destroy($id);
   });
   
   $routes->get('/deleteaihealue/:id', 'check_logged_in', function($id) {
-    ForumsController::destroya($id);
+    AihealueController::destroy($id);
   });
   
   $routes->get('/login', function() {
