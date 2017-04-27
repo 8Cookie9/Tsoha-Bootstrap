@@ -44,8 +44,8 @@
 		if(BaseController::check_logged_in()){
 			$user=BaseController::get_user_logged_in();
 			$user->add_luettu($id);
-			ForumsController::keskustelu($id);
 		}
+		ForumsController::keskustelu($id);
 	});
   
   $routes->get('/editviesti/:id', function($id) {
