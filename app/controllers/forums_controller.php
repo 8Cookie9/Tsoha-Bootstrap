@@ -29,7 +29,7 @@
 		$aihealue = Aihealue::find($id);
 		$user=BaseController::get_user_logged_in();
 		$luettu=$user->luettu();
-		View::make('suunnitelmat/keskustelut.html', array('keskustelut' => $keskustelut, 'aihealue' => $luettu, 'luettu' => ));
+		View::make('suunnitelmat/keskustelut.html', array('keskustelut' => $keskustelut, 'aihealue' => $luettu, 'luettu' => $luettu));
     }
 	
 	public static function keskustelu($id){
