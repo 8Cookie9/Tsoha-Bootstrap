@@ -57,11 +57,25 @@
 		return null;
 	  }
 	  
-	  public function validate_nimi(){
+  public function validate_nimi(){
 		$errors = array();
 		if($this->nimi == '' || $this->nimi == null){
 			$errors[] = 'Nimi ei saa olla tyhjä!';
 		}
 		return $errors;
 	}
+	
+	public function add_luettu($keskustelu_id){
+		$query = DB::connection()->prepare('DELETE FROM Luettu WHERE kayttaja_id=:kayttaja_id AND keskustelu_id=:keskustelu_id');
+		$query->execute(array('keskustelu_id' => $keskustelu_id, 'kayttaja_id' => $this->id));
+		$query = DB::connection()->prepare('INSERT INTO Luettu (keskustelu_id, kayttaja_id) VALUES (:keskustelu_id, :kayttaja_id)');
+		$query->execute(array('keskustelu_id' => $keskustelu_id, 'kayttaja_id' => $this->id));
 	}
+	
+	public function luettu(){
+		$query = DB::connection()->prepare('SELECT keskustelu_id FROM Luettu WHERE kayttaja_id = :kayttaja_id');
+		$query->execute(array('kayttaja_id' => $this->id));
+		$rows = $query->fetchAll();
+		return $rows;
+	}
+}

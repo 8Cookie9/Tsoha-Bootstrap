@@ -40,9 +40,11 @@
     ForumsController::keskustelut($id);
   });
   
-  $routes->get('/keskustelu/:id', 'check_logged_in', function($id) {
-    ForumsController::keskustelu($id);
-  });
+	$routes->get('/keskustelu/:id', 'check_logged_in', function($id) {
+		$user=BaseController::get_user_logged_in();
+		$user->add_luettu($id);
+		ForumsController::keskustelu($id);
+	});
   
   $routes->get('/editviesti/:id', 'check_logged_in', function($id) {
     ForumsController::muokkaus($id);

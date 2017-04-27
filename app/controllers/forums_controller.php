@@ -27,7 +27,9 @@
 	public static function keskustelut($id){
 		$keskustelut = Keskustelu::allFrom($id);
 		$aihealue = Aihealue::find($id);
-		View::make('suunnitelmat/keskustelut.html', array('keskustelut' => $keskustelut, 'aihealue' => $aihealue));
+		$user=BaseController::get_user_logged_in();
+		$luettu=$user->luettu();
+		View::make('suunnitelmat/keskustelut.html', array('keskustelut' => $keskustelut, 'aihealue' => $luettu, 'luettu' => ));
     }
 	
 	public static function keskustelu($id){
@@ -51,6 +53,8 @@
 		}
 		
 		$viesti->save();
+		$query = DB::connection()->prepare('DELETE FROM Luettu WHERE keskustelu_id=:id');
+		$query->execute(array('id' => $id));
 		Redirect::to('/keskustelu/' . $id, array('message' => 'Viesti lähetetty!', 'content' => $params['content']));
 	}
 	
