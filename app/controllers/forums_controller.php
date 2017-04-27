@@ -75,9 +75,9 @@
 		  'sisalto' => $params['content']
 		));
 		
-		$errors = $viesti->errors();
+		$errors = array_merge($errors, $viesti->errors();
 		if(count($errors) > 0){
-		  self::destroyk($keskustelu->id);
+		  $keskustelu->destroy();
 		  Redirect::to('/keskustelut/' . $id, array('errors' => $errors, 'content' => $params['content'], 'otsikko' => $params['otsikko']));
 		}
 		
