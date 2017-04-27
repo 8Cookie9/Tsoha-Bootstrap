@@ -39,19 +39,9 @@ Kirjautunut sisään käyttäjänä <b>{{user_logged_in.nimi}}</b>
 					<a href="{{base_path}}/keskustelu/{{keskustelu.id}}">{{keskustelu.otsikko}}</a></div>
 					<div class="col-xs-3">
 					<a href="{{base_path}}/deletekeskustelu/{{keskustelu.id}}" class="btn btn-default">Poista</a></div>
-					<div class="col-xs-3">
-					{% for l in luettu %}
-						{% if l==keskustelu.id %}Luettu{% endif %}
-					{% endfor %}
-					</div>
 				{% else %}
 					<div class="col-xs-9">
 					<a href="{{base_path}}/keskustelu/{{keskustelu.id}}">{{keskustelu.otsikko}}</a></div>
-					<div class="col-xs-3">
-					{% for l in luettu %}
-						{% if l==keskustelu.id %}Luettu{% endif %}
-					{% endfor %}
-					</div>
 				{% endif %}
 				</td>
 			</tr>
