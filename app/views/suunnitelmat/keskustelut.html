@@ -43,11 +43,14 @@ Kirjautunut sisään käyttäjänä <b>{{user_logged_in.nimi}}</b>
 					<div class="col-xs-9">
 					<a href="{{base_path}}/keskustelu/{{keskustelu.id}}">{{keskustelu.otsikko}}</a></div>
 				{% endif %}
+				<div class="col-xs-3">
 				{% for l in luettu %}
 					{% if l==keskustelu.id %}
-					<div class="col-xs-3">Luettu</div>
+					Luettu
 					{% endif %}
+					{{l}}
 				{% endfor %}
+				</div>
 				</td>
 			</tr>
 		{% endfor %}
