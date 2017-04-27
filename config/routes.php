@@ -24,7 +24,7 @@
     AihealueController::store();
   });
 
-  $routes->get('/', 'check_logged_in', function() {
+  $routes->get('/', function() {
     ForumsController::aihealueet();
   });
 
@@ -32,21 +32,23 @@
     ForumsController::sandbox();
   });
   
-  $routes->get('/aihealueet', 'check_logged_in', function() {
+  $routes->get('/aihealueet', function() {
     ForumsController::aihealueet();
   });
   
-  $routes->get('/keskustelut/:id', 'check_logged_in', function($id) {
+  $routes->get('/keskustelut/:id', function($id) {
     ForumsController::keskustelut($id);
   });
   
-	$routes->get('/keskustelu/:id', 'check_logged_in', function($id) {
-		$user=BaseController::get_user_logged_in();
-		$user->add_luettu($id);
-		ForumsController::keskustelu($id);
+	$routes->get('/keskustelu/:id', function($id) {
+		if(BaseController::check_logged_in()){
+			$user=BaseController::get_user_logged_in();
+			$user->add_luettu($id);
+			ForumsController::keskustelu($id);
+		}
 	});
   
-  $routes->get('/editviesti/:id', 'check_logged_in', function($id) {
+  $routes->get('/editviesti/:id', function($id) {
     ForumsController::muokkaus($id);
   });
   
