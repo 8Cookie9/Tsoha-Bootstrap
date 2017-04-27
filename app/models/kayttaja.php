@@ -78,7 +78,7 @@
 		$rows = $query->fetchAll();
 		$luettu=array();
 		foreach($rows as $row){
-			$luettu[]=$row['kayttaja_id'];
+			$luettu[]=$row['keskustelu_id'];
 		}
 		return $luettu;
 	}
