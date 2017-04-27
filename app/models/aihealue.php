@@ -57,8 +57,7 @@
 		$errors = array();
 		if($this->nimi == '' || $this->nimi == null){
 			$errors[] = 'Otsikko ei saa olla tyhjä!';
-		}
-		if(strlen($this->nimi) < 4){
+		}else if(strlen($this->nimi) < 4){
 			$errors[] = 'Otsikko on liian lyhyt (alle 4 merkkiä)!';
 		}
 		return $errors;
