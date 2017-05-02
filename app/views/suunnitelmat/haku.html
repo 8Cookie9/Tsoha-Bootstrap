@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+{% block content %}
+
+
+{% if user_logged_in %}
+Kirjautunut sisään käyttäjänä <b>{{user_logged_in.nimi}}</b>
+{% endif %}
+
+{% if message %}
+<div class="alert alert-success">
+  {{message}}
+</div>
+{% endif %}
+
+{% if error %}
+<div class="alert alert-danger">
+  {{error}}
+</div>
+{% endif %}
+
+{% if errors %}
+	{% for e in errors %}
+	  <div class="alert alert-danger">
+		{{e}}
+	  </div>
+	{% endfor %}
+{% endif %}
+
+  <h1>Keskustelujen haku</h1>
+
+  <form method="post">
+    <div class="form-group">
+      <label>Hakusana</label>
+      <input type="text" name="hakusana" class="form-control" value="">
+    </div>
+	<div class="form-group">
+      <label>Hakualue</label>
+      <input type="checkbox" name="hakualue" value="otsikko">otsikko<br>
+	  <input type="checkbox" name="hakualue" value="viesti">viestit<br>
+    </div>
+    <div class="form-group">
+      <button type="submit" class="btn btn-primary">Hae</button>
+    </div>
+  </form>
+  
+  <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-sa/4.0/88x31.png" /></a><br />This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">Creative Commons Attribution-ShareAlike 4.0 International License</a>.
+{% endblock %}

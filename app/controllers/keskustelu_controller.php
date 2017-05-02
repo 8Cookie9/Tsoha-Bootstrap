@@ -4,28 +4,28 @@
 	public static function store($id){
 		$params = $_POST;
 		$keskustelu = new Keskustelu(array(
-		  'aihealue_id' => $id,
-		  'kayttaja_id' => self::get_user_logged_in()->id,
-		  'otsikko' => $params['otsikko']
+			'aihealue_id' => $id,
+			'kayttaja_id' => self::get_user_logged_in()->id,
+			'otsikko' => $params['otsikko']
 		));
 		
 		$errors = $keskustelu->errors();
 		if(count($errors) > 0){
-		  Redirect::to('/keskustelut/' . $id, array('errors' => $errors, 'otsikko' => $params['otsikko']));
+			Redirect::to('/keskustelut/' . $id, array('errors' => $errors, 'otsikko' => $params['otsikko']));
 		}
 		
 		$keskustelu->save();
 		
 		$viesti = new Viesti(array(
-		  'keskustelu_id' => $keskustelu->id,
-		  'kayttaja_id' => self::get_user_logged_in()->id,
-		  'sisalto' => $params['content']
+			'keskustelu_id' => $keskustelu->id,
+			'kayttaja_id' => self::get_user_logged_in()->id,
+			'sisalto' => $params['content']
 		));
 		
 		$errors = array_merge($errors, $viesti->errors());
 		if(count($errors) > 0){
-		  $keskustelu->destroy();
-		  Redirect::to('/keskustelut/' . $id, array('errors' => $errors, 'content' => $params['content'], 'otsikko' => $params['otsikko']));
+			$keskustelu->destroy();
+			Redirect::to('/keskustelut/' . $id, array('errors' => $errors, 'content' => $params['content'], 'otsikko' => $params['otsikko']));
 		}
 		
 		$viesti->save();
@@ -37,7 +37,7 @@
 		$params = $_POST;
 
 		$attributes = array(
-		  'id' => $id
+			'id' => $id
 		);
 
 		$keskustelu = new Keskustelu($attributes);

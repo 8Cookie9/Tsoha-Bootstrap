@@ -22,7 +22,6 @@
       foreach($this->validators as $validator){
          $errors=array_merge($errors, $this->{$validator}());
       }
-
       return $errors;
     }
 

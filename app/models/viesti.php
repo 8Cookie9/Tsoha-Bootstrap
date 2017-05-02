@@ -82,12 +82,12 @@
 		}
 		
 		public function validate_sisalto(){
-		  $errors = array();
-		  if($this->sisalto == '' || $this->sisalto == null){
-			$errors[] = 'Viesti ei saa olla tyhjä!';
-		  }else if(strlen($this->sisalto) < 5){
-			$errors[] = 'Viesti on liian lyhyt!';
-		  }
-		  return $errors;
+			$errors = array();
+			if($this->sisalto == '' || $this->sisalto == null){
+				$errors[] = 'Viesti ei saa olla tyhjä!';
+			}else if(strlen($this->sisalto) < 5){
+				$errors[] = 'Viesti on liian lyhyt!';
+			}
+			return $errors;
 		}
 	}

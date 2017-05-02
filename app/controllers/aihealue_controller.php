@@ -4,12 +4,12 @@
 	public static function store(){
 		$params = $_POST;
 		$aihealue = new Aihealue(array(
-		  'nimi' => $params['nimi'],
+			'nimi' => $params['nimi'],
 		));
 		
 		$errors = $aihealue->errors();
 		if(count($errors) > 0){
-		  Redirect::to('/', array('error' => $errors, 'nimi' => $params['nimi']));
+			Redirect::to('/', array('error' => $errors, 'nimi' => $params['nimi']));
 		}
 		
 		$aihealue->save();
@@ -20,7 +20,7 @@
 		$params = $_POST;
 
 		$attributes = array(
-		  'id' => $id
+			'id' => $id
 		);
 
 		$aihealue = new Aihealue($attributes);
