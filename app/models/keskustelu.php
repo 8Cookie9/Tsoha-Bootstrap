@@ -26,8 +26,8 @@
 		}
 		
 		public static function search($haku){
-			$query = DB::connection()->prepare('SELECT * FROM Keskustelu WHERE otsikko LIKE %:haku%');
-			$query->execute(array('haku' => $haku));
+			$query = DB::connection()->prepare('SELECT * FROM Keskustelu WHERE otsikko LIKE :haku');
+			$query->execute(array('haku' => '%' . $haku . '%'));
 			$rows = $query->fetchAll();
 			$messages = array();
 
