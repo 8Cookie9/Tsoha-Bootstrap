@@ -36,6 +36,10 @@
 		ForumsController::aihealueet();
 	});
 	
+	$routes->post('/hae', function(){
+		ForumsController::searchresult();
+	});
+	
 	$routes->get('/hae', function(){
 		ForumsController::search();
 	});

@@ -34,8 +34,6 @@
 	}
 
 	public static function destroy($id){
-		$params = $_POST;
-
 		$attributes = array(
 			'id' => $id
 		);

@@ -46,4 +46,12 @@
 	public static function search(){
 		View::make('suunnitelmat/haku.html');
     }
+	
+	public static function searchresult(){
+		$params = $_POST;
+		$keskustelut = Keskustelu::search($params['hakusana']);
+		$user=BaseController::get_user_logged_in();
+		$luettu=$user->luettu();
+		View::make('suunnitelmat/listaus.html', array('keskustelut' => $keskustelut, 'luettu' => $luettu));
+    }
   }
