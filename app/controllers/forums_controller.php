@@ -27,8 +27,10 @@
 	public static function keskustelut($id){
 		$keskustelut = Keskustelu::allFrom($id);
 		$aihealue = Aihealue::find($id);
-		$user=BaseController::get_user_logged_in();
-		$luettu=$user->luettu();
+		if(BaseController::check_logged_in()){
+			$user=BaseController::get_user_logged_in();
+			$luettu=$user->luettu();
+		}
 		View::make('suunnitelmat/keskustelut.html', array('keskustelut' => $keskustelut, 'aihealue' => $luettu, 'luettu' => $luettu));
     }
 	
@@ -50,8 +52,10 @@
 	public static function searchresult(){
 		$params = $_POST;
 		$keskustelut = Keskustelu::search($params['hakusana']);
-		$user=BaseController::get_user_logged_in();
-		$luettu=$user->luettu();
+		if(BaseController::check_logged_in()){
+			$user=BaseController::get_user_logged_in();
+			$luettu=$user->luettu();
+		}
 		View::make('suunnitelmat/listaus.html', array('keskustelut' => $keskustelut, 'luettu' => $luettu));
     }
   }
