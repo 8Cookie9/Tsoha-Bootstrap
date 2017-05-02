@@ -32,7 +32,7 @@
 			$user=BaseController::get_user_logged_in();
 			$luettu=$user->luettu();
 		}
-		View::make('suunnitelmat/keskustelut.html', array('keskustelut' => $keskustelut, 'aihealue' => $luettu, 'luettu' => $luettu));
+		View::make('suunnitelmat/keskustelut.html', array('keskustelut' => $keskustelut, 'aihealue' => $aihealue, 'luettu' => $luettu));
     }
 	
 	public static function keskustelu($id){
