@@ -56,11 +56,11 @@
 		ForumsController::keskustelu($id);
 	});
 
-	$routes->get('/editviesti/:id', function($id) {
+	$routes->get('/editviesti/:id', 'check_logged_in', function($id) {
 		ForumsController::muokkaus($id);
 	});
 	
-	$routes->get('/editkeskustelu/:id', function($id) {
+	$routes->get('/editkeskustelu/:id', 'check_logged_in', function($id) {
 		ForumsController::keskustelumuokkaus($id);
 	});
 	

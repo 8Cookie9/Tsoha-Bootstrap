@@ -43,11 +43,11 @@
 
 		$keskustelu = new Keskustelu($attributes);
 		
-		$errors = $viesti->errors();
+		$errors = $keskustelu->errors();
 		if(count($errors) > 0){
 			Redirect::to('/editkeskustelu/' . $keskustelu->id, array('errors' => $errors, 'otsikko' => $params['otsikko']));
 		}
-		$viesti->update();
+		$keskustelu->update();
 		Redirect::to('/', array('message' => 'Keskustelua muokattu!'));
     }
 
