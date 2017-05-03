@@ -84,6 +84,11 @@
 			$this->id = $row['id'];
 		}
 		
+		public function update(){
+			$query = DB::connection()->prepare('UPDATE Keskustelu SET otsikko=:otsikko WHERE id=:id');
+			$query->execute(array('id' => $this->id, 'otsikko' => $this->otsikko));
+		}
+		
 		public function destroy(){
 			$query = DB::connection()->prepare('DELETE FROM Viesti WHERE keskustelu_id=:id');
 			$query->execute(array('id' => $this->id));
