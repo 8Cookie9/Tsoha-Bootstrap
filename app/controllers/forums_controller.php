@@ -24,6 +24,11 @@
 		View::make('suunnitelmat/muokkaus.html', array('viesti' => $viesti));
     }
 	
+	public static function keskustelumuokkaus($id){
+		$keskustelu = Keskustelu::find($id);
+		View::make('suunnitelmat/kmuokkaus.html', array('keskustelu' => $keskustelu));
+    }
+	
 	public static function keskustelut($id){
 		$keskustelut = Keskustelu::allFrom($id);
 		$aihealue = Aihealue::find($id);
