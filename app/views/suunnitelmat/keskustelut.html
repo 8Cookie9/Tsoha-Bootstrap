@@ -35,10 +35,12 @@ Kirjautunut sisään käyttäjänä <b>{{user_logged_in.nimi}}</b>
 			<tr>
 				<td>
 				{% if keskustelu.kayttaja_id==user_logged_in.id or user_logged_in.admin %}
-					<div class="col-xs-6">
+					<div class="col-xs-5">
 					<a href="{{base_path}}/keskustelu/{{keskustelu.id}}">{{keskustelu.otsikko}}</a></div>
-					<div class="col-xs-3">
+					<div class="col-xs-2">
 					<a href="{{base_path}}/deletekeskustelu/{{keskustelu.id}}" class="btn btn-default">Poista</a></div>
+					<div class="col-xs-2" style="border-bottom: 1px solid;padding: 5px;">
+					<a href="{{base_path}}/editkeskustelu/{{keskustelu.id}}" class="btn btn-default">Muokkaa</a></div>
 				{% else %}
 					<div class="col-xs-9">
 					<a href="{{base_path}}/keskustelu/{{keskustelu.id}}">{{keskustelu.otsikko}}</a></div>

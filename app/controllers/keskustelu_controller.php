@@ -32,6 +32,24 @@
 		
 		Redirect::to('/keskustelu/' . $keskustelu->id);
 	}
+	
+	public static function update($id){
+		$params = $_POST;
+
+		$attributes = array(
+			'id' => $id,
+			'otsikko' => $params['otsikko'],
+		);
+
+		$keskustelu = new Keskustelu($attributes);
+		
+		$errors = $viesti->errors();
+		if(count($errors) > 0){
+			Redirect::to('/editkeskustelu/' . $keskustelu->id, array('errors' => $errors, 'otsikko' => $params['otsikko']));
+		}
+		$viesti->update();
+		Redirect::to('/', array('message' => 'Keskustelua muokattu!'));
+    }
 
 	public static function destroy($id){
 		$attributes = array(
