@@ -63,6 +63,10 @@
 	$routes->get('/editkeskustelu/:id', function($id) {
 		ForumsController::keskustelumuokkaus($id);
 	});
+	
+	$routes->push('/editkeskustelu/:id', 'check_logged_in', function($id) {
+		KeskusteluController::update($id);
+	});
 
 	$routes->post('/editviesti/:id', 'check_logged_in', function($id) {
 		ViestiController::update($id);
