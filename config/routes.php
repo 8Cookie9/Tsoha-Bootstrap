@@ -64,7 +64,7 @@
 		ForumsController::keskustelumuokkaus($id);
 	});
 	
-	$routes->push('/editkeskustelu/:id', 'check_logged_in', function($id) {
+	$routes->post('/editkeskustelu/:id', 'check_logged_in', function($id) {
 		KeskusteluController::update($id);
 	});
 
