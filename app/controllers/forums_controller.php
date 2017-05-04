@@ -57,7 +57,11 @@
 	
 	public static function searchresult(){
 		$params = $_POST;
-		$keskustelut = Keskustelu::search($params['hakusana']);
+		if($params['hakualue']){
+			$keskustelut = Viesti::search($params['hakusana']);
+		}else{
+			$keskustelut = Keskustelu::search($params['hakusana']);
+		}
 		$luettu=array();
 		if(BaseController::check_logged_in()){
 			$user=BaseController::get_user_logged_in();

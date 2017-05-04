@@ -11,16 +11,16 @@
 			$query = DB::connection()->prepare('SELECT * FROM Aihealue');
 			$query->execute();
 			$rows = $query->fetchAll();
-			$messages = array();
+			$aihealueet = array();
 
 			foreach($rows as $row){
-				$messages[] = new Aihealue(array(
+				$aihealueet[] = new Aihealue(array(
 					'id' => $row['id'],
 					'nimi' => $row['nimi']
 				));
 			}
 
-			return $messages;
+			return $aihealueet;
 		}
 		
 		public static function find($id){

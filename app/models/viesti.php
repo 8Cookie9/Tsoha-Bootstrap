@@ -11,10 +11,10 @@
 			$query = DB::connection()->prepare('SELECT * FROM Viesti');
 			$query->execute();
 			$rows = $query->fetchAll();
-			$messages = array();
+			$viestit = array();
 
 			foreach($rows as $row){
-				$messages[] = new Viesti(array(
+				$viestit[] = new Viesti(array(
 					'id' => $row['id'],
 					'keskustelu_id' => $row['keskustelu_id'],
 					'kayttaja_id' => $row['kayttaja_id'],
@@ -23,7 +23,7 @@
 				));
 			}
 
-			return $messages;
+			return $viestit;
 		}
 		
 		public static function allFrom($id){
@@ -57,11 +57,29 @@
 					'sisalto' => $row['sisalto'],
 					'aika' => $row['aika']
 				));
-			return $Viesti;
+				return $Viesti;
+			}
+			return null;
+	    }
+		
+		public static function search($haku){
+			$query = DB::connection()->prepare('SELECT * FROM Keskustelu WHERE id IN  (SELECT keskustelu_id FROM Viesti WHERE sisalto LIKE :haku)');
+			$query->execute(array('haku' => '%' . $haku . '%'));
+			$rows = $query->fetchAll();
+			$keskustelut = array();
+
+			foreach($rows as $row){
+				$keskustelut[] = new Keskustelu(array(
+					'id' => $row['id'],
+					'kayttaja_id' => $row['kayttaja_id'],
+					'aihealue_id' => $row['aihealue_id'],
+					'otsikko' => $row['otsikko']
+				));
+			}
+
+			return $keskustelut;
 		}
-		return null;
-	  }
-	  
+		
 		public function save(){
 			$query = DB::connection()->prepare('INSERT INTO Viesti (keskustelu_id, kayttaja_id, sisalto) VALUES (:keskustelu_id, :kayttaja_id, :sisalto)');
 			$query->execute(array('keskustelu_id' => $this->keskustelu_id, 'kayttaja_id' => $this->kayttaja_id, 'sisalto' => $this->sisalto));

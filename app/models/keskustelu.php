@@ -11,10 +11,10 @@
 			$query = DB::connection()->prepare('SELECT * FROM Keskustelu');
 			$query->execute();
 			$rows = $query->fetchAll();
-			$messages = array();
+			$keskustelut = array();
 
 			foreach($rows as $row){
-				$messages[] = new Keskustelu(array(
+				$keskustelut[] = new Keskustelu(array(
 					'id' => $row['id'],
 					'kayttaja_id' => $row['kayttaja_id'],
 					'aihealue_id' => $row['aihealue_id'],
@@ -22,17 +22,17 @@
 				));
 			}
 
-			return $messages;
+			return $keskustelut;
 		}
 		
 		public static function search($haku){
 			$query = DB::connection()->prepare('SELECT * FROM Keskustelu WHERE otsikko LIKE :haku');
 			$query->execute(array('haku' => '%' . $haku . '%'));
 			$rows = $query->fetchAll();
-			$messages = array();
+			$keskustelut = array();
 
 			foreach($rows as $row){
-				$messages[] = new Keskustelu(array(
+				$keskustelut[] = new Keskustelu(array(
 					'id' => $row['id'],
 					'kayttaja_id' => $row['kayttaja_id'],
 					'aihealue_id' => $row['aihealue_id'],
@@ -40,7 +40,7 @@
 				));
 			}
 
-			return $messages;
+			return $keskustelut;
 		}
 		
 		public static function allFrom($id){
