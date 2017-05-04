@@ -57,7 +57,7 @@
 	
 	public static function searchresult(){
 		$params = $_POST;
-		if(array_key_exists('hakualue', $params)){
+		if(!array_key_exists('hakualue', $params)){
 			$keskustelut = Keskustelu::search($params['hakusana']);
 		}else{
 			$keskustelut = Viesti::search($params['hakusana']);
