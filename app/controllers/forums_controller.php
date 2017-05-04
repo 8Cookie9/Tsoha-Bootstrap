@@ -33,7 +33,7 @@
 		$keskustelut = Keskustelu::allFrom($id);
 		$aihealue = Aihealue::find($id);
 		$luettu=array();
-		if(BaseController::check_logged_in()){
+		if(BaseController::get_user_logged_in() != null){
 			$user=BaseController::get_user_logged_in();
 			$luettu=$user->luettu();
 		}
