@@ -29,7 +29,7 @@
 	});
 
 	$routes->get('/keskustelu/:id', function($id) {
-		if(BaseController::check_logged_in()){
+		if(BaseController::get_user_logged_in() != null){
 			$user=BaseController::get_user_logged_in();
 			$user->add_luettu($id);
 		}
