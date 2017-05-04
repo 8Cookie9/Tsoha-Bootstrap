@@ -92,6 +92,8 @@
 		}
 		
 		public function destroy(){
+			$query = DB::connection()->prepare('DELETE FROM Luettu WHERE keskustelu_id=:id');
+			$query->execute(array('id' => $this->id));
 			$query = DB::connection()->prepare('DELETE FROM Viesti WHERE keskustelu_id=:id');
 			$query->execute(array('id' => $this->id));
 			$query = DB::connection()->prepare('DELETE FROM Keskustelu WHERE id=:id RETURNING aihealue_id');
