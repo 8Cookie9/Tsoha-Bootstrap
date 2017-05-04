@@ -48,7 +48,7 @@
 			Redirect::to('/editkeskustelu/' . $keskustelu->id, array('errors' => $errors, 'otsikko' => $params['otsikko']));
 		}
 		$keskustelu->update();
-		Redirect::to('/', array('message' => 'Keskustelua muokattu!'));
+		Redirect::to('/keskustelut/' . $keskustelu->aihealue_id, array('message' => 'Keskustelua muokattu!'));
     }
 
 	public static function destroy($id){
