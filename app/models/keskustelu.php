@@ -85,8 +85,10 @@
 		}
 		
 		public function update(){
-			$query = DB::connection()->prepare('UPDATE Keskustelu SET otsikko=:otsikko WHERE id=:id');
+			$query = DB::connection()->prepare('UPDATE Keskustelu SET otsikko=:otsikko WHERE id=:id RETURNING aihealue_id');
 			$query->execute(array('id' => $this->id, 'otsikko' => $this->otsikko));
+			$row = $query->fetch();
+			$this->aihealue_id = $row['aihealue_id'];
 		}
 		
 		public function destroy(){
