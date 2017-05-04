@@ -44,7 +44,7 @@
 		}
 		
 		public static function allFrom($id){
-			$query = DB::connection()->prepare('SELECT * FROM Keskustelu k, (SELECT aika FROM Viesti v WHERE v.keskustelu_id = k.id ORDER BY aika DESC LIMIT 1) AS t WHERE k.aihealue_id = :id ORDER BY t');
+			$query = DB::connection()->prepare('SELECT * FROM Viesti v, Keskustelu k WHERE v.keskustelu_id = k.id AND k.aihealue_id = :id AND v.aika IN (SELECT aika FROM Viesti WHERE keskustelu_id = k.id ORDER BY aika DESC LIMIT 1)');
 			$query->execute(array('id' => $id));
 			$rows = $query->fetchAll();
 			$keskustelut = array();
