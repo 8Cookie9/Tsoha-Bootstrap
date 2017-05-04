@@ -4,26 +4,6 @@
 		BaseController::check_logged_in();
 	}
 
-	$routes->post('/logout', function(){
-		UserController::logout();
-	});
-
-	$routes->post('/keskustelu/:id', 'check_logged_in', function($id){
-		ViestiController::storeViesti($id);
-	});
-
-	$routes->post('/keskustelut/:id', 'check_logged_in', function($id){
-		KeskusteluController::store($id);
-	});
-
-	$routes->post('/', 'check_logged_in', function(){
-		AihealueController::store();
-	});
-
-	$routes->post('/aihealueet', 'check_logged_in', function(){
-		AihealueController::store();
-	});
-
 	$routes->get('/', function() {
 		ForumsController::aihealueet();
 	});
@@ -83,7 +63,28 @@
 	$routes->get('/deleteaihealue/:id', 'check_logged_in', function($id) {
 		AihealueController::destroy($id);
 	});
+	
+	$routes->post('/logout', function(){
+		UserController::logout();
+	});
 
+	$routes->post('/keskustelu/:id', 'check_logged_in', function($id){
+		ViestiController::storeViesti($id);
+	});
+
+	$routes->post('/keskustelut/:id', 'check_logged_in', function($id){
+		KeskusteluController::store($id);
+	});
+
+	$routes->post('/', 'check_logged_in', function(){
+		AihealueController::store();
+	});
+
+	$routes->post('/aihealueet', 'check_logged_in', function(){
+		AihealueController::store();
+	});
+
+	
 	$routes->get('/login', function() {
 		ForumsController::login();
 	});
