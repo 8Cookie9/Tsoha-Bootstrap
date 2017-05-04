@@ -42,9 +42,10 @@
 	
 	public static function keskustelu($id){
 		$keskustelu = Keskustelu::find($id);
+		$aihealue = Keskustelu::findAihealue($id);
 		$viestit = Viesti::allFrom($id);
 		$kayttajat = Kayttaja::all();
-		View::make('suunnitelmat/keskustelu.html', array('keskustelu' => $keskustelu,'viestit' => $viestit,'kayttajat' => $kayttajat));
+		View::make('suunnitelmat/keskustelu.html', array('keskustelu' => $keskustelu,'viestit' => $viestit,'kayttajat' => $kayttajat, 'aihealue' => $aihealue));
     }
 	
 	public static function login(){

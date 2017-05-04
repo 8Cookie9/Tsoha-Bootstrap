@@ -32,34 +32,34 @@
 					'id' => $row['id'],
 					'nimi' => $row['nimi']
 				));
-			return $Aihealue;
+				return $Aihealue;
+			}
+			return null;
 		}
-		return null;
-	  }
 	  
-	  public function save(){
-		$query = DB::connection()->prepare('INSERT INTO Aihealue (nimi) VALUES (:nimi) RETURNING id');
-		$query->execute(array('nimi' => $this->nimi));
-		$row = $query->fetch();
-		$this->id = $row['id'];
-	}
-	
-	public function destroy(){
-		$query = DB::connection()->prepare('DELETE FROM Viesti WHERE keskustelu_id IN (SELECT id FROM Keskustelu where aihealue_id=:id)');
-		$query->execute(array('id' => $this->id));
-		$query = DB::connection()->prepare('DELETE FROM Keskustelu WHERE aihealue_id=:id');
-		$query->execute(array('id' => $this->id));
-		$query = DB::connection()->prepare('DELETE FROM Aihealue WHERE id=:id');
-		$query->execute(array('id' => $this->id));
-	}
-	
-	public function validate_nimi(){
-		$errors = array();
-		if($this->nimi == '' || $this->nimi == null){
-			$errors[] = 'Otsikko ei saa olla tyhjä!';
-		}else if(strlen($this->nimi) < 4){
-			$errors[] = 'Otsikko on liian lyhyt (alle 4 merkkiä)!';
+		public function save(){
+			$query = DB::connection()->prepare('INSERT INTO Aihealue (nimi) VALUES (:nimi) RETURNING id');
+			$query->execute(array('nimi' => $this->nimi));
+			$row = $query->fetch();
+			$this->id = $row['id'];
 		}
-		return $errors;
+		
+		public function destroy(){
+			$query = DB::connection()->prepare('DELETE FROM Viesti WHERE keskustelu_id IN (SELECT id FROM Keskustelu where aihealue_id=:id)');
+			$query->execute(array('id' => $this->id));
+			$query = DB::connection()->prepare('DELETE FROM Keskustelu WHERE aihealue_id=:id');
+			$query->execute(array('id' => $this->id));
+			$query = DB::connection()->prepare('DELETE FROM Aihealue WHERE id=:id');
+			$query->execute(array('id' => $this->id));
+		}
+		
+		public function validate_nimi(){
+			$errors = array();
+			if($this->nimi == '' || $this->nimi == null){
+				$errors[] = 'Otsikko ei saa olla tyhjä!';
+			}else if(strlen($this->nimi) < 4){
+				$errors[] = 'Otsikko on liian lyhyt (alle 4 merkkiä)!';
+			}
+			return $errors;
+		}
 	}
-}

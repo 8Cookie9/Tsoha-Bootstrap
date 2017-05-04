@@ -76,6 +76,20 @@
 			}
 			return null;
 		}
+		
+		public static function findAihealue($id){
+			$query = DB::connection()->prepare('SELECT * FROM Aihealue WHERE id IN (SELECT aihealue_id FROM Keskustelu WHERE id = :id) LIMIT 1');
+			$query->execute(array('id' => $id));
+			$row = $query->fetch();
+			if($row){
+				$Aihealue = new Aihealue(array(
+					'id' => $row['id'],
+					'nimi' => $row['nimi']
+				));
+				return $Aihealue;
+			}
+			return null;
+		}
 	  
 		public function save(){
 			$query = DB::connection()->prepare('INSERT INTO Keskustelu (aihealue_id, kayttaja_id, otsikko) VALUES (:aihealue_id, :kayttaja_id, :otsikko) RETURNING id');

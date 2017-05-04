@@ -25,7 +25,7 @@ Kirjautunut sisään käyttäjänä <b>{{user_logged_in.nimi}}</b>
 	{% endfor %}
 {% endif %}
 
-<h1>{{keskustelu.otsikko}}</h1>
+<a href="{{base_path}}/keskustelut/{{aihealue.id}}" class="btn btn-default">{{aihealue.nimi}}</a> ＞ <h1>{{keskustelu.otsikko}}</h1>
 	
 {% for viesti in viestit %}
   <div class="row" style="border: 1px solid;background-color:#f8f8f8;margin-bottom: 30px;">
@@ -40,11 +40,11 @@ Kirjautunut sisään käyttäjänä <b>{{user_logged_in.nimi}}</b>
 	{% endfor %}
 	</b>
 	</div>
-	<div class="col-xs-3" style="border-bottom: 1px solid;padding: 12px;">{{viesti.aika}}</div>
 	<div class="col-xs-3" style="border-bottom: 1px solid;padding: 5px;">
 	<a href="{{base_path}}/editviesti/{{viesti.id}}" class="btn btn-default">Muokkaa</a></div>
 	<div class="col-xs-3" style="border-bottom: 1px solid;padding: 5px;">
 	<a href="{{base_path}}/deleteviesti/{{viesti.id}}" class="btn btn-default">Poista</a></div>
+	<div class="col-xs-3" style="border-bottom: 1px solid;padding: 12px;">{{viesti.aika}}</div>
 	{% else %}
 	<div class="col-xs-8" style="border-bottom: 1px solid;padding: 12px;">
 	<b>
