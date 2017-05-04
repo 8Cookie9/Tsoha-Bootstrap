@@ -57,10 +57,10 @@
 	
 	public static function searchresult(){
 		$params = $_POST;
-		if($params['hakualue']){
-			$keskustelut = Viesti::search($params['hakusana']);
-		}else{
+		if($params['hakualue']==null){
 			$keskustelut = Keskustelu::search($params['hakusana']);
+		}else{
+			$keskustelut = Viesti::search($params['hakusana']);
 		}
 		$luettu=array();
 		if(BaseController::check_logged_in()){

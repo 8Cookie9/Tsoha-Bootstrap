@@ -63,7 +63,7 @@
 	    }
 		
 		public static function search($haku){
-			$query = DB::connection()->prepare('SELECT * FROM Keskustelu WHERE id IN  (SELECT keskustelu_id FROM Viesti WHERE sisalto LIKE :haku)');
+			$query = DB::connection()->prepare('SELECT * FROM Keskustelu WHERE (id IN  (SELECT keskustelu_id FROM Viesti WHERE sisalto LIKE :haku)) OR otsikko LIKE :haku');
 			$query->execute(array('haku' => '%' . $haku . '%'));
 			$rows = $query->fetchAll();
 			$keskustelut = array();
