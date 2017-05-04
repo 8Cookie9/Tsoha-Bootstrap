@@ -69,7 +69,7 @@
 	});
 
 	$routes->post('/keskustelu/:id', 'check_logged_in', function($id){
-		ViestiController::storeViesti($id);
+		ViestiController::store($id);
 	});
 
 	$routes->post('/keskustelut/:id', 'check_logged_in', function($id){
