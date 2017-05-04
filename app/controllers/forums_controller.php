@@ -2,7 +2,7 @@
 	class ForumsController extends BaseController{
 
     public static function index(){
-		View::make('suunnitelmat/aihealueet.html');
+		View::make('aihealueet.html');
     }
 
     public static function sandbox(){
@@ -16,17 +16,17 @@
 	
 	public static function aihealueet(){
 		$aihealueet = Aihealue::all();
-		View::make('suunnitelmat/aihealueet.html', array('aihealueet' => $aihealueet));
+		View::make('aihealueet.html', array('aihealueet' => $aihealueet));
     }
 	
 	public static function muokkaus($id){
 		$viesti = Viesti::find($id);
-		View::make('suunnitelmat/muokkaus.html', array('viesti' => $viesti));
+		View::make('muokkaus.html', array('viesti' => $viesti));
     }
 	
 	public static function keskustelumuokkaus($id){
 		$keskustelu = Keskustelu::find($id);
-		View::make('suunnitelmat/kmuokkaus.html', array('keskustelu' => $keskustelu));
+		View::make('kmuokkaus.html', array('keskustelu' => $keskustelu));
     }
 	
 	public static function keskustelut($id){
@@ -37,7 +37,7 @@
 			$user=BaseController::get_user_logged_in();
 			$luettu=$user->luettu();
 		}
-		View::make('suunnitelmat/keskustelut.html', array('keskustelut' => $keskustelut, 'aihealue' => $aihealue, 'luettu' => $luettu));
+		View::make('keskustelut.html', array('keskustelut' => $keskustelut, 'aihealue' => $aihealue, 'luettu' => $luettu));
     }
 	
 	public static function keskustelu($id){
@@ -45,15 +45,15 @@
 		$aihealue = Keskustelu::findAihealue($id);
 		$viestit = Viesti::allFrom($id);
 		$kayttajat = Kayttaja::all();
-		View::make('suunnitelmat/keskustelu.html', array('keskustelu' => $keskustelu,'viestit' => $viestit,'kayttajat' => $kayttajat, 'aihealue' => $aihealue));
+		View::make('keskustelu.html', array('keskustelu' => $keskustelu,'viestit' => $viestit,'kayttajat' => $kayttajat, 'aihealue' => $aihealue));
     }
 	
 	public static function login(){
-		View::make('suunnitelmat/login.html');
+		View::make('login.html');
     }
 	
 	public static function search(){
-		View::make('suunnitelmat/haku.html');
+		View::make('haku.html');
     }
 	
 	public static function searchresult(){
@@ -68,6 +68,6 @@
 			$user=BaseController::get_user_logged_in();
 			$luettu=$user->luettu();
 		}
-		View::make('suunnitelmat/listaus.html', array('keskustelut' => $keskustelut, 'luettu' => $luettu));
+		View::make('listaus.html', array('keskustelut' => $keskustelut, 'luettu' => $luettu));
     }
   }
