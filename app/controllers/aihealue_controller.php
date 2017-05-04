@@ -9,7 +9,7 @@
 		
 		$errors = $aihealue->errors();
 		if(count($errors) > 0){
-			Redirect::to('/', array('error' => $errors, 'nimi' => $params['nimi']));
+			Redirect::to('/', array('errors' => $errors, 'nimi' => $params['nimi']));
 		}
 		
 		$aihealue->save();
